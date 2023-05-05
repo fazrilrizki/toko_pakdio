@@ -19,7 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('debug', [CustomerController::class, 'debug']);
+
 Route::get('login', [AdminController::class, 'formLogin']);
 Route::post('actionLogin', [AdminController::class, 'actionLogin']);
 
-Route::get('loginCustomer', [CustomerController::class, 'formLoginCustomer']);
+// Route::get('loginCustomer', [CustomerController::class, 'formLoginCustomer']);
+
+Route::get('registerCustomer', [CustomerController::class, 'formRegisterCustomer']);
+Route::post('actionRegisterCustomer', [CustomerController::class, 'actionRegisterCustomer']); 
+Route::post('auth', [CustomerController::class, 'authenticate']);
+
+Route::middleware('auth')->group(function (){
+    Route::get('index', [CustomerController::class, 'indexCustomer']);
+});
