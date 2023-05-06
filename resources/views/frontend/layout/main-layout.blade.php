@@ -4,8 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Halaman Mahasiswa</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Halaman Home - @yield('title')</title>
+    <link rel="stylesheet" href="/css-frontend/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
@@ -20,24 +20,42 @@
     <div class="header">
         <div class="navbar">
             <div class="logo">
-                <img src="images/UI-18.png" width="125px"  alt="logo">
+                <a>TokoPakDio</a>
             </div>
             <nav>
                 <ul id="menuitems">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="program.php">Produtcs</a></li>
+                    @if (Auth::check())
+                    <li><a href="index">Home</a></li>
+                    @elseif (Auth::guest())
+                    <li><a href="home">Home</a></li>
+                    @endif
+                    <li><a href="about">About</a></li>
+                    <li><a href="product">Produtcs</a></li>
+                    @if (Auth::check())
                     <li><a href="account.php">Account</a></li>
                     <li><a href="pembayaran.php">Pembayaran</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    @endif
+                    @if (Auth::guest())
+                    <li><a href="registerCustomer">Login</a></li>
+                    @else
+
+                    <li>
+                        <a href="logout" onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">Logout</a>
+                    </li>
+                    <form id="logout-form" action="logout" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    @endif
+
                 </ul>
             </nav>
-            <a><img src="images/menu.png" class="menu-icon" onclick="menutoggle();"></a>
+            <a><img src="img/icons/child.png" class="menu-icon" onclick="menutoggle();"></a>
         </div>
     </div>
 
     @yield('content')
-  
+
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -45,18 +63,18 @@
                     <h3>Download Our App</h3>
                     <p>Download App For Android and IOS Mobile Phone.</p>
                     <div class="app-logo">
-                        <img src="images/play-store.png">
-                        <img src="images/app-store.png">
+                        <img src="img/play-store.png">
+                        <img src="img/app-store.png">
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/UI-18.png">
-                    <p>Tujuan dari Produk TSTL - Coolture.ID adalah untuk melestarikan kebudayaan dan menanamkan rasa nasionalisme melalui sebuah produk Apparel atau Pakaian.</p>
+                    <img src="img/icons/logo.png">
+                    <p>Produk dari TokoPakDio terdiri dari mainan yang disukai oleh anak-anak. Mainan tersebut sudah bersetifikat halal x.</p>
                 </div>
                 <div class="footer-col-3">
                     <h3>Follow US</h3>
                     <ul>
-                        <a href="https://www.instagram.com/yudi_kops/">
+                        <a href="instagram.com">
                             <li>Instagram</li>
                         </a>
                         <a href="facebook.com">
@@ -69,7 +87,7 @@
                 <div class="footer-col-4">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li>Coolture.ID</li>
+                        <li>TokoPakDio</li>
                         <li>dinamika.ac.id</li>
                         <li>Google</li>
                         <li>Blogspot</li>
@@ -77,7 +95,6 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright 2020 - Muhammad Wahyudi - 18410100148</p>
         </div>
     </div>
     <!--js for menu-->

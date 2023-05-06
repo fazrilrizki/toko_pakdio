@@ -1,6 +1,6 @@
 @extends('frontend.layout.main-layout')
 
-@section('title', 'Home Auth')
+@section('title', 'Home Guest')
 
 @section('content')
 <div class="container">

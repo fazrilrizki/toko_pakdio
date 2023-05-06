@@ -26,10 +26,17 @@ Route::post('actionLogin', [AdminController::class, 'actionLogin']);
 
 // Route::get('loginCustomer', [CustomerController::class, 'formLoginCustomer']);
 
-Route::get('registerCustomer', [CustomerController::class, 'formRegisterCustomer']);
-Route::post('actionRegisterCustomer', [CustomerController::class, 'actionRegisterCustomer']); 
+Route::get('registerCustomer', [CustomerController::class, 'formRegisterCustomer'])->name('login')->middleware('guest');
+Route::post('actionRegisterCustomer', [CustomerController::class, 'actionRegisterCustomer']);
 Route::post('auth', [CustomerController::class, 'authenticate']);
 
-Route::middleware('auth')->group(function (){
+Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome')->middleware('guest');
+Route::get('about', [CustomerController::class, 'about']);
+Route::get('product', [CustomerController::class, 'product']);
+
+Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);
 });
+
+// ROUTE LOGOUT
+Route::post('logout', [CustomerController::class, 'LogoutUser']);

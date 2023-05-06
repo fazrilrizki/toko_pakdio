@@ -12,38 +12,57 @@ class CustomerController extends Controller
     //     return view('frontend.register.login');
     // }
 
-    public function formRegisterCustomer(){
+    public function formRegisterCustomer()
+    {
         return view('frontend.register.register');
     }
 
-    public function debug(){
+    public function debug()
+    {
         return view('frontend.register.debug');
     }
 
-    public function indexCustomer(){
+    public function indexCustomer()
+    {
         return view('frontend.home.home');
     }
 
-    public function actionRegisterCustomer(Request $request){
+    public function homeCustomer()
+    {
+        return view('frontend.home.guest');
+    }
+
+    public function about()
+    {
+        return view('frontend.home.about');
+    }
+
+    public function product()
+    {
+        return view('frontend.product.product');
+    }
+
+    public function actionRegisterCustomer(Request $request)
+    {
         // dd($request->all());
         try {
-        $request->validate([
-            'nama' =>'required',
-            'username' =>'required',
-            'email' =>'required',
-            'password' =>'required',
-        ]);
+            $request->validate([
+                'nama' => 'required',
+                'username' => 'required',
+                'email' => 'required',
+                'password' => 'required',
+            ]);
 
-        $user = new User();
-        $user->name = $request->nama;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
+            $user = new User();
+            $user->name = $request->nama;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
 
-        return redirect('registerCustomer')->with('registerSuccess', 'Registrasi Berhasil!');
-        }  catch (\Exception $e) {
-        return redirect('registerCustomer')->with('registerError', 'Registrasi Gagal!, Coba Kembali!');
+            return redirect('registerCustomer')->with('registerSuccess', 'Registrasi Berhasil!');
+        } catch (\Exception $e) {
+            return redirect('registerCustomer')->with('registerError', 'Registrasi Gagal!, Coba Kembali!');
         }
     }
 
@@ -55,8 +74,8 @@ class CustomerController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $request->session()->regenerate();
- 
-            return redirect()->intended('debug');
+
+            return redirect()->intended('index');
             // dd('berhasil auth!');
         } else {
             return back()->withErrors([
@@ -65,5 +84,14 @@ class CustomerController extends Controller
         }
     }
 
-    
+    public function LogoutUser(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('home');
+    }
 }
