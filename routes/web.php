@@ -34,6 +34,7 @@ Route::post('auth', [CustomerController::class, 'authenticate']);
 Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome')->middleware('guest');
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('product', [ProductController::class, 'product']);
+Route::get('order', [ProductController::class, 'order']);
 
 Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);

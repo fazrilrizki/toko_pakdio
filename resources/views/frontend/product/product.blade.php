@@ -29,7 +29,11 @@
                     <p>Stock Barang : {{ $produk["product_stock"] }} </p>
                     <p><b> Harga : Rp. {{ $produk["product_price"] }} </b></p>
                     <p>Deskripsi Mainan : {{ $produk["product_description"] }} </p>
-                    <a href="pemesanan.php?id=' . $id . '" class="btn">Pesan Sekarang</a>
+                    @if (Auth::check())
+                    <a href="order" class="btn">Pesan Sekarang</a>
+                    @elseif (Auth::guest())
+                    <a href="registerCustomer" class="btn">Login Now!</a>
+                    @endif
                 </div>
                 @endforeach
             </div>

@@ -25,12 +25,14 @@ class CustomerController extends Controller
 
     public function indexCustomer()
     {
-        return view('frontend.home.home');
+        $product = Product::latest();
+        return view('frontend.home.home', ["product" => $product->paginate(10)->withQueryString()]);
     }
 
     public function homeCustomer()
     {
-        return view('frontend.home.guest');
+        $product = Product::latest();
+        return view('frontend.home.guest', ["product" => $product->paginate(10)->withQueryString()]);
     }
 
     public function about()

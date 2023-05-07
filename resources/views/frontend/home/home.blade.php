@@ -19,8 +19,9 @@
     <div class="small-container">
         <h2 class="title">Our Ready Stock</h2>
         <div class="row">
+            @foreach($product as $produk)
             <div class="col-3">
-                <img src="../images/produk/">
+                <img src="../images/produk">
                 <h4> </h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -29,11 +30,17 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o" aria-hidden="true"></i>
                 </div>
-                <p>Nama Mainan : </p>
-                <p>Stok : </p>
-                <p><b> Harga : Rp. </b></p>
-                <p>Deskripsi Mainan : </p>
+                <p>Nama Mainan : {{ $produk["product_name"] }}</p>
+                <p>Stock Barang : {{ $produk["product_stock"] }} </p>
+                <p><b> Harga : Rp. {{ $produk["product_price"] }} </b></p>
+                <p>Deskripsi Mainan : {{ $produk["product_description"] }} </p>
+                @if (Auth::check())
+                <a href="order" class="btn">Pesan Sekarang</a>
+                @elseif (Auth::guest())
+                <a href="registerCustomer" class="btn">Login Now!</a>
+                @endif
             </div>
+            @endforeach
         </div>
     </div>
 </div>

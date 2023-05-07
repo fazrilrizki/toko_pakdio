@@ -1,59 +1,71 @@
-*{
+* {
     marginn: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Poppins', sans-serif;
 }
-.navbar{
+
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
 }
-nav{
+
+nav {
     flex: 1;
     text-align: right;
 }
-nav ul{
+
+nav ul {
     display: inline-block;
     list-style-type: none;
 }
-nav ul li{
+
+nav ul li {
     display: inline-block;
     margin-right: 20px;
 }
-a{
+
+a {
     text-decoration: none;
     color: #555;
 }
-.container{
+
+.container {
     max-width: 1300px;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.col-2{
+
+.col-2 {
     flex-basis: 50%;
     min-width: 300px;
     transition: transform 0.5s;
 }
-.col-2 img{
+
+.col-2 img {
     max-width: 100%;
     padding: 50px 0;
 }
-.col-2 h1{
+
+.col-2 h1 {
     font-size: 50px;
     line-height: 60px;
     margin: 25px 0;
 }
-.btn{
+
+.btn {
     display: inline-block;
     background: #ff523b;
     color: #fff;
@@ -62,36 +74,41 @@ a{
     border-radius: 25px;
 }
 
-.btn:hover{
+.btn:hover {
     background: #563434;
 }
 
-.header{
+.header {
     background: radial-gradient(#fff);
-    
+
 }
-.header .row{
+
+.header .row {
     margin-top: 70px;
 }
-.categories{
+
+.categories {
     margin: 70px 0;
 }
-.col-3{
+
+.col-3 {
     flex-basis: 30%;
     min-width: 250px;
     margin-bottom: 30px;
 }
-.col-3 img{
+
+.col-3 img {
     width: 100%;
 }
-.small-container{
+
+.small-container {
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
 }
 
-.col-4{
+.col-4 {
     flex-basis: 25%;
     padding: 10px;
     min-width: 200px;
@@ -99,15 +116,16 @@ a{
     /* display: inline-block; */
     /* transition: transform 0.5s; */
 }
+
 /* .col-4:hover{
     transform: translateY(-10%);
 } */
 
-.col-4 img{
+.col-4 img {
     width: 100%;
 }
 
-.title{
+.title {
     /*width: 100%;*/
     text-align: center;
     margin: 0 auto 80px;
@@ -116,7 +134,7 @@ a{
     color: #555
 }
 
-.title::after{
+.title::after {
     content: '';
     background: #ff523b;
     width: 80px;
@@ -126,75 +144,81 @@ a{
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    
+
 }
 
-h4{
+h4 {
     color: #555;
     font-weight: normal;
 }
-.col-4 p{
+
+.col-4 p {
     font-size: 14px;
 }
-.rating{
+
+.rating {
     color: #ff523b;
 }
 
-.offer{
-        background: radial-gradient(#fff, #ffd6d6);
-        margin-top: 80px;
-        padding: 30px 0;
+.offer {
+    background: radial-gradient(#fff, #ffd6d6);
+    margin-top: 80px;
+    padding: 30px 0;
 }
-.col-2 .offer-img{
+
+.col-2 .offer-img {
     /*size: 450px;*/
-/*    width: 600px;
+    /*    width: 600px;
     height: 400px;*/
     padding: 50px;
     transition: transform 0.5s;
 }
-.offer-img:hover{
+
+.offer-img:hover {
     transform: translateY(-10%);
 }
 
-small{
+small {
     color: #555;
 }
 
 /*testiominial*/
-.testimonial{
+.testimonial {
     padding: 100px 100px;
 }
 
-.testimonial .col-3{
+.testimonial .col-3 {
     text-align: center;
     padding: 40px 20px;
-    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.5s;
 }
 
-.testimonial .col-3 img{
+.testimonial .col-3 img {
     width: 100%;
     margin-top: 20px;
     /* border-radius: 50%; */
 }
-.testimonial .col-3:hover{
+
+.testimonial .col-3:hover {
     transform: translateY(-5%);
 
 }
-.fa-quote-left{
+
+.fa-quote-left {
     font-size: 34px;
     color: #ff523b;
 }
 
-.col-3 p{
+.col-3 p {
     /*font-size: 14px;*/
     font-family: sans-serif;
     margin: 14px 0;
     color: #777;
 }
 
-.testimonial .col-3 h3{
+.testimonial .col-3 h3 {
     font-weight: 600;
     color: #555;
     font-size: 16px;
@@ -202,29 +226,30 @@ small{
 
 
 /*testiominial*/
-.testimonial2{
+.testimonial2 {
     padding: 100px 100px;
 }
 
-.testimonial2 .col-3{
+.testimonial2 .col-3 {
     text-align: center;
     padding: 40px 20px;
-    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.5s;
 }
 
-.testimonial2 .col-3 img{
+.testimonial2 .col-3 img {
     width: 50px;
     margin-top: 20px;
     border-radius: 50%;
 }
-.testimonial2 .col-3:hover{
+
+.testimonial2 .col-3:hover {
     transform: translateY(-5%);
 
 }
 
-.testimonial2 .col-3 h3{
+.testimonial2 .col-3 h3 {
     font-weight: 600;
     color: #555;
     font-size: 16px;
@@ -232,71 +257,78 @@ small{
 
 
 /*footer*/
-.footer{
+.footer {
     background: #000;
     color: #8a8a8a;
     font-size: 14px;
     padding: 60px 0 20px;
 }
 
-.footer p{
+.footer p {
     color: #8a8a8a;
-    
+
 }
 
-.footer h3{
+.footer h3 {
     color: #fff;
     margin-bottom: 20px;
 }
 
-.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4{
+.footer-col-1,
+.footer-col-2,
+.footer-col-3,
+.footer-col-4 {
     min-width: 250px;
     margin-bottom: 20px;
 }
-.footer-col-1{
+
+.footer-col-1 {
     flex-basis: 30%;
 }
-.footer-col-2{
+
+.footer-col-2 {
     flex: 1;
     text-align: center;
 }
 
-.footer-col-2 img{
+.footer-col-2 img {
     width: 180px;
     margin-bottom: 20px;
 }
 
 
-.footer-col-3, .footer-col-4{
+.footer-col-3,
+.footer-col-4 {
     flex-basis: 12%;
     text-align: center;
 }
 
-ul{
+ul {
     list-style: none;
 }
 
-.app-logo{
+.app-logo {
     margin-top: 20px;
 }
-.app-logo img{
-   width: 140px; 
+
+.app-logo img {
+    width: 140px;
 }
 
-.footer hr{
+.footer hr {
     border: none;
     background: #b5b5b5;
     height: 1px;
     margin: 20px 0;
 }
 
-.copyright{
+.copyright {
     text-align: center
 }
 
 /*LOGIN*/
 
-.form-box{
+.form-box {
     width: 380px;
     height: 480px;
     position: relative;
@@ -305,35 +337,36 @@ ul{
     padding: 5px;
     overflow: hidden;
 }
-#login{
+
+#login {
     left: 30x;
-    
+
 }
 
-#register{
+#register {
     left: 450px;
 }
 
 
-.button-box{
+.button-box {
     width: 110px;
     margin: 35px auto;
     position: relative;
-    box-shadow:0 0 20px 9px #ff61241f;
+    box-shadow: 0 0 20px 9px #ff61241f;
     border-radius: 30px;
 }
 
-.toggle-btn{
+.toggle-btn {
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;
     border: 0;
     outline: none;
     position: relative;
-    
+
 }
 
-#btn{
+#btn {
     top: 0;
     left: 0;
     position: absolute;
@@ -344,22 +377,22 @@ ul{
     transition: .5s;
 }
 
-.sos{
+.sos {
     margin: 30px auto;
     text-align: center;
 
 }
 
-.sos img{
-   width: 30px;
-   margin: 0 12px;
-   box-shadow: 0 0 20px 0 #7f7f7f3d;
-   cursor: pointer;
-   border-radius: 50%;
+.sos img {
+    width: 30px;
+    margin: 0 12px;
+    box-shadow: 0 0 20px 0 #7f7f7f3d;
+    cursor: pointer;
+    border-radius: 50%;
 
 }
 
-.input{
+.input {
     margin: 40px;
     top: 108px;
     position: absolute;
@@ -369,7 +402,7 @@ ul{
 
 }
 
-.input-field{
+.input-field {
     width: 100%;
     padding: 10px 0;
     margin: 5px 0;
@@ -382,9 +415,9 @@ ul{
 
 }
 
-#id{
+#id {
     width: 50%;
-  
+
     padding: 10px 0;
     margin: 5px 0;
     border-left: 0;
@@ -396,7 +429,7 @@ ul{
 
 }
 
-#name{
+#name {
     width: 50%;
     position: absolute;
     padding: 10px 0;
@@ -410,9 +443,9 @@ ul{
 
 }
 
-#email{
+#email {
     width: 50%;
-  
+
     padding: 10px 0;
     margin: 5px 0;
     border-left: 0;
@@ -424,7 +457,7 @@ ul{
 
 }
 
-#user{
+#user {
     width: 50%;
     position: absolute;
     padding: 10px 0;
@@ -438,9 +471,9 @@ ul{
 
 }
 
-#pass{
+#pass {
     width: 100%;
-  
+
     padding: 10px 0;
     margin: 5px 0;
     border-left: 0;
@@ -452,9 +485,9 @@ ul{
 
 }
 
-#repas{
+#repas {
     width: 100%;
-    
+
     padding: 10px 0;
     margin: 5px 0;
     border-left: 0;
@@ -467,7 +500,7 @@ ul{
 }
 
 
-.submit{
+.submit {
     border: 0;
     background: none;
     display: block;
@@ -482,14 +515,16 @@ ul{
     transition: 0.5s;
     cursor: pointer;
 }
-.submit:hover{
+
+.submit:hover {
     background: linear-gradient(to right, #ff105f, #ffad06);
 }
 
-.cek{
+.cek {
     margin: 10px 10px 30px 0;
 }
-span{
+
+span {
     margin: 10px 10px 30px 0;
     color: #777;
     font-size: 12px;
@@ -497,16 +532,16 @@ span{
     position: absolute;
 }
 
-.menu-icon{
+.menu-icon {
     width: 28px;
-    margin-left:20px; 
+    margin-left: 20px;
     display: none;
 }
 
 /*media query for menu*/
 
-@media only screen and (max-width: 800px){
-    nav ul{
+@media only screen and (max-width: 800px) {
+    nav ul {
         position: absolute;
         top: 70ox;
         left: 0;
@@ -514,46 +549,50 @@ span{
         width: 100%;
         overflow: hidden;
         transition: max-height: 0.5s;
-        
-    } 
-    
-    nav ul li{
+
+    }
+
+    nav ul li {
         display: block;
         margin-right: 50px;
         margin-top: 10px;
-        margin-bottom: 10px;   
+        margin-bottom: 10px;
     }
-    nav ul li a{
+
+    nav ul li a {
         color: #fff;
     }
-    
-    .menu-icon{
+
+    .menu-icon {
         display: block;
         cursor: pointer;
     }
 }
 
 /*media query for less than 600 screen*/
-@media only screen and (max-width: 600px){
-    .row{
+@media only screen and (max-width: 600px) {
+    .row {
         text-align: center;
     }
-    .col-2, .col-3, .col-4{
+
+    .col-2,
+    .col-3,
+    .col-4 {
         flex-basis: 100%;
     }
 }
 
 /* edit data */
-.edit{
+.edit {
     /* position: fixed; */
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 600px;
     padding: 30px;
     background: #fff;
     z-index: 10000;
-    box-shadow: 0 0 0 100vh rgba(49,39,71,0.95);
+    box-shadow: 0 0 0 100vh rgba(49, 39, 71, 0.95);
     /* visibility: hidden; */
     opacity: 1;
     transition: 0.5s;
@@ -564,7 +603,7 @@ span{
     opacity: 1;
 } */
 
-.edit h2{
+.edit h2 {
     font-size: 16px;
     color: #312747;
 }
@@ -574,11 +613,11 @@ span{
     color: #312747;
 }
 
-.edit .input{
+.edit .input {
     margin-top: 10px;
 }
 
-.edit .input input{
+.edit .input input {
     padding: 6px;
     outline: none;
     width: 300px;
@@ -586,7 +625,7 @@ span{
     border: 1px solid #999;
 }
 
-.edit .input input[type="submit"]{
+.edit .input input[type="submit"] {
     padding: 10px;
     outline: none;
     width: 110px;
@@ -598,7 +637,7 @@ span{
     cursor: pointer;
 }
 
-.edit .close{
+.edit .close {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -608,20 +647,20 @@ span{
 }
 
 
-#team img{
+#team img {
     margin-top: -50px;
 }
 
-#team i{
+#team i {
     font-size: 26px;
     color: #555;
 }
 
-#team p{
+#team p {
     font-weight: 500;
 }
 
-#team .card{
+#team .card {
     border-radius: 1;
     box-shadow: 5px 5px 15px #e74c3c;
     transition: all 0.3s ease-in;
@@ -629,7 +668,7 @@ span{
     -moz-transition: all 0.3s ease-in;
 }
 
-#team .card:hover{
+#team .card:hover {
     background: #e74c3c;
     color: #fff;
     border-radius: 5px;
@@ -637,31 +676,32 @@ span{
     box-shadow: 5px 5px 10px #9e9e9e;
 }
 
-#team .card:hover h3, #team .card:hover i{
+#team .card:hover h3,
+#team .card:hover i {
     color: #fff;
 }
 
-.tambah{
+.tambah {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 600px;
     padding: 60px;
     background: #fff;
     z-index: 10000;
-    box-shadow: 0 0 0 100vh rgba(49,39,71,0.95);
+    box-shadow: 0 0 0 100vh rgba(49, 39, 71, 0.95);
     visibility: hidden;
     opacity: 0;
     transition: 0.5s;
 }
 
-.tambah.active{
+.tambah.active {
     visibility: visible;
     opacity: 1;
 }
 
-.tambah h2{
+.tambah h2 {
     font-size: 28px;
     color: #312747;
 }
@@ -671,11 +711,11 @@ span{
     color: #312747;
 }
 
-.tambah .input2{
+.tambah .input2 {
     margin-top: 10px;
 }
 
-.tambah .input2 input{
+.tambah .input2 input {
     padding: 6px;
     outline: none;
     width: 300px;
@@ -683,7 +723,7 @@ span{
     border: 1px solid #999;
 }
 
-.tambah .input2 input[type="submit"]{
+.tambah .input2 input[type="submit"] {
     padding: 10px;
     outline: none;
     width: 110px;
@@ -695,7 +735,7 @@ span{
     cursor: pointer;
 }
 
-.tambah .close{
+.tambah .close {
     position: absolute;
     top: 20px;
     right: 20px;
