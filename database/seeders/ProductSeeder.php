@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $data = [
-            'id' => 12,
+            'id' => 1,
             'product_types_id' => 1,
             'product_name' => 'Skyline GTR',
             'product_stock' => 50,
