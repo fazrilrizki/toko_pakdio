@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ Route::post('auth', [CustomerController::class, 'authenticate']);
 
 Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome')->middleware('guest');
 Route::get('about', [CustomerController::class, 'about']);
-Route::get('product', [CustomerController::class, 'product']);
+Route::get('product', [ProductController::class, 'product']);
 
 Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);
