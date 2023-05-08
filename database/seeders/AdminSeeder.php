@@ -16,8 +16,8 @@ class AdminSeeder extends Seeder
     {   
         $data = [
             'name' => 'Pak Dio',
-            'username' => 'dio123',
-            'password' => bcrypt('dio123')
+            'username' => 'admin123',
+            'password' => 'admin123'
         ];
         Admin::create($data);
     }

@@ -19,12 +19,22 @@ class ProductController extends Controller
         ]);
     }
 
-    public function order(Request $request)
+    public function order($id)
     {
+        $product = Product::find($id);
         if (Auth::check()) {
-            return view('frontend.product.order');
+            return view('frontend.product.order',['product' => $product]);
         } else {
             return back()->with('orderFailed', '');
         }
+    }
+
+    public function actionTransaksi(Request $request){
+         // update data stock barang
+        dd($request);
+        //  $ambilstockSekaranng = $request->ambilstocksekarang;
+        //  $totalStockSekarang = $ambilstockSekaranng - $request->jumlah;
+        //  dd($totalStockSekarang);
+
     }
 }

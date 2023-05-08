@@ -30,7 +30,7 @@
                     <p><b> Harga : Rp. {{ $produk["product_price"] }} </b></p>
                     <p>Deskripsi Mainan : {{ $produk["product_description"] }} </p>
                     @if (Auth::check())
-                    <a href="order" class="btn">Pesan Sekarang</a>
+                    <a href="order/barang/{{ $produk["id"] }}" class="btn">Pesan Sekarang</a>
                     @elseif (Auth::guest())
                     <a href="registerCustomer" class="btn">Login Now!</a>
                     @endif

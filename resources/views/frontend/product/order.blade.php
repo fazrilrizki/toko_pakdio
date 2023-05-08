@@ -11,10 +11,14 @@
     <div class="row">
         <div class="col-md-4">
             <h1 class="mb-3">Form Pemesanan</h1>
-            <form action="" method="POST">
-                <input type="hidden" readonly="readonly" class="form-control" name="idt" value="">
-                <input type="hidden" readonly="readonly" class="form-control" name="idpro" value=">">
-                <input type="hidden" readonly="readonly" class="form-control" name="idpel" value="">
+            <form action="transaksi" method="POST">
+                @csrf   
+                {{-- <input type="text" name="ambilstocksekarang" value="{{ $product->product_stock }}"> --}}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Barang</label>
+                    {{-- <input type="text" class="form-control" name="namabarang" id="namabarang" value="{{ $product->product_name }}" readonly="readonly"> --}}
+                    <small class="form-text text-muted">Harga per satu Produk</small>
+                </div>
                 <div class="form-group">
                     <label for="">Jumlah</label>
                     <input type="number" class="form-control" name="jumlah" id="jumlah" onkeyup="myFunction() ">
@@ -22,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Harga Satuan</label>
-                    <input type="text" class="form-control" name="hargas" id="hargas" onkeyup="myFunction() " value="" readonly="readonly">
+                    {{-- <input type="text" class="form-control" name="hargas" id="hargas" onkeyup="myFunction() " value="{{ $product->product_price }}" readonly="readonly"> --}}
                     <small class="form-text text-muted">Harga per satu Produk</small>
                 </div>
                 <div class="form-group">
@@ -35,18 +39,18 @@
                     <input type="text" class="form-control" name="alamatk">
                     <small class="form-text text-muted">Masukkan Alamat anda</small>
                 </div>
-                <script>
-                    function myFunction() {
-                        var hargas = document.getElementById("hargas").value;
-                        var jumlah = document.getElementById("jumlah").value;
-                        var hasil = jumlah * hargas;
-                        document.getElementById("hargat").value = hasil;
-
-                    }
-                </script>
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
 </div>
+<script>
+    function myFunction() {
+        var hargas = document.getElementById("hargas").value;
+        var jumlah = document.getElementById("jumlah").value;
+        var hasil = jumlah * hargas;
+        document.getElementById("hargat").value = hasil;
+
+    }
+</script>
 @endsection
