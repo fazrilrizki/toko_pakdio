@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProdukAdminController;
+use App\Http\Controllers\SaldoAkunController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,10 +33,19 @@ Route::get('dashboard', [AdminController::class, 'dashboard']);
 //JENIS PRODUK
 Route::get('indexDataJenisProduk', [AdminController::class, 'indexDataJenisProduk']);
 Route::post('insertJenisProduk', [JenisProdukController::class, 'insertJenisProduk']);
+Route::post('updateJenisProduk', [JenisProdukController::class, 'updateJenisProduk']);
 Route::post('deleteJenisProduk', [JenisProdukController::class, 'deleteJenisProduk']);
 
+//PRODUK
 Route::get('indexDataProduk', [AdminController::class, 'indexDataProduk']);
+Route::post('insertProduk', [ProdukAdminController::class, 'insertProduk']);
+
 Route::get('indexDataUsers', [AdminController::class, 'indexDataUsers']);
+
+
+//SALDO AKUN PELANGGAN
+Route::get('indexDataSaldoAkun', [SaldoAkunController::class, 'indexDataSaldoAkun']);
+
 Route::get('indexDataPesanan', [AdminController::class, 'indexTransaksiPesanan']);
 Route::get('logout', [AdminController::class, 'actionLogout']);
 

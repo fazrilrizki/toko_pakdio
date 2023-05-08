@@ -57,98 +57,13 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit' . $id . '">Update</a>
+                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $getjenis->id }}">Update</a>
                                             <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $getjenis->id }}">Delete</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
-                                        <!-- modal edit -->
-                                        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
-                                            <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-
-                                                <div class="modal-content">
-                                                    <div class="modal-body p-0">
-                                                        <div class="card bg-secondary border-0 mb-0">
-
-                                                            <div class="card-body px-lg-5 py-lg-5">
-                                                                <div class="text-center text-muted mb-4">
-                                                                    <small>Update Data Pegawai</small>
-                                                                </div>
-
-                                                                <form role="form" method="post" action="editpegawai.php" enctype="multipart/form-data">
-
-
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="nama">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="alamat">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <select name="jabatan" id="jabatan" class="form-control">
-                                                                        
-                                                                                <option value="Jabatan"> --- Pilih Jabatan ---</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="telp">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="user">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="pass">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                         </tbody>
                     </table>
 
@@ -182,6 +97,40 @@
                         </div>
                     </div>
                 </div>
+
+                @foreach($jenis as $updateJenis)
+                <!-- modal update -->
+                <div class="modal fade" id="modal-edit{{ $updateJenis->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary border-0 mb-0">
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                            <small>Update Data Pegawai</small>
+                                        </div>
+                                        <form role="form" method="post" action="updateJenisProduk" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                                    </div>
+                                                    <input type="hidden" name="idjenis" value="{{ $updateJenis->id }}">
+                                                    <input class="form-control" placeholder="Nama Jenis Produk" type="text" name="namajenis" value="{{ $updateJenis->types_name }}">
+                                                </div>
+                                            </div>  
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
 
                 @foreach($jenis as $getjenis2)
                 <!-- modal delete -->

@@ -22,16 +22,17 @@ class JenisProdukController extends Controller
         return redirect('indexDataJenisProduk');
     }
 
-    // public function updateJenisProduk(Request $request){
-    //     $request->validate([
-    //         'namajenis' =>'required'
-    //     ]);
-    //     $jenis_produk = new ProductTypesModel();
-    //     $jenis_produk->types_name = $request->namajenis;
-    //     $jenis_produk->save();
+    public function updateJenisProduk(Request $request){
+        $request->validate([
+            'namajenis' =>'required'
+        ]);
+        $jenis_produk = ProductTypesModel::find($request->idjenis);
+        $jenis_produk->types_name = $request->namajenis;
+        $jenis_produk->save();
 
-    //     return redirect('indexDataJenisProduk');
-    // }
+        return redirect('indexDataJenisProduk');
+    }
+    
 
     public function deleteJenisProduk(Request $request){
         $ambilIDJenis = $request->ambilid;

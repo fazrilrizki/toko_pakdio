@@ -24,4 +24,9 @@ class Product extends Model
         //     return
         // });
     }
+
+    public function path()
+    {
+        return asset('img/' . $this->name);
+    }
 }

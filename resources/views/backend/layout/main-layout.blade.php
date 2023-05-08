@@ -26,7 +26,7 @@
             <!-- Brand -->
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <img src="img/brand/blue.png" class="navbar-brand-img" alt="...">
+                    TokoPakDio
                 </a>
             </div>
             <div class="navbar-inner">
@@ -56,6 +56,12 @@
                             <a class="nav-link" href="indexDataUsers">
                                 <i class="ni ni-single-02 text-yellow"></i>
                                 <span class="nav-link-text">Daftar Pelanggan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="indexDataSaldoAkun">
+                                <i class="ni ni-single-02 text-yellow"></i>
+                                <span class="nav-link-text">Daftar Saldo Akun Pelanggan</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -143,22 +149,6 @@
                         <div class="copyright text-center  text-lg-left  text-muted">
                             &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </footer>

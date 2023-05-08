@@ -47,9 +47,12 @@
                             </tr>
                         </thead>
                         <tbody class="list">
+                            <?php
+                            $no= 1; 
+                            ?>
                             @foreach($product as $produk)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $produk->product_photo }}</td>
                                 <td>{{ $produk->product_name }}</td>
                                 <td>{{ $produk->product_stock }}</td>
@@ -69,92 +72,6 @@
                                 </td>
                             </tr>
                             @endforeach
-
-                                        <!-- modal edit -->
-                                        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
-                                            <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-
-                                                <div class="modal-content">
-                                                    <div class="modal-body p-0">
-                                                        <div class="card bg-secondary border-0 mb-0">
-
-                                                            <div class="card-body px-lg-5 py-lg-5">
-                                                                <div class="text-center text-muted mb-4">
-                                                                    <small>Update Data Pegawai</small>
-                                                                </div>
-
-                                                                <form role="form" method="post" action="editpegawai.php" enctype="multipart/form-data">
-
-
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="nama">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="alamat">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <select name="jabatan" id="jabatan" class="form-control">
-                                                                        
-                                                                                <option value="Jabatan"> --- Pilih Jabatan ---</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="telp">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="user">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="pass">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                         </tbody>
                     </table>
                 </div>
@@ -173,7 +90,8 @@
                             <div class="text-center text-muted mb-4">
                                 <small>Tambah Data Produk</small>
                             </div>
-                            <form role="form" method="post" action="tambahpegawai.php" enctype="multipart/form-data">
+                            <form role="form" method="post" action="insertProduk" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -187,10 +105,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <select name="jabatan" id="jabatan" class="form-control">
-                                            <option value="Jabatan"> --- Pilih Jabatan ---</option>
+                                        <select name="jenis_produk" id="jenis_produk" class="form-control">
+                                            <option value="Jabatan"> --- Pilih Jenis Produk ---</option>
                                             @foreach($jenis_produk as $getJenis)
-
+                                            <option value="{{ $getJenis->id }}">{{ $getJenis->types_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -211,6 +129,14 @@
                                         <input class="form-control" placeholder="Harga Barang" type="number" name="price">
                                     </div>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="gambar">
+                                    </div>
+                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
                                 </div>
@@ -222,6 +148,76 @@
             </div>
         </div>
     </div>
+
+    @foreach($product as $updateProduct)
+    <!-- modal update -->
+    <div class="modal fade" id="modal-edit{{ $updateProduct->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card bg-secondary border-0 mb-0">
+                        <div class="card-body px-lg-5 py-lg-5">
+                            <div class="text-center text-muted mb-4">
+                                <small>Update Data Pegawai</small>
+                            </div>
+                            <form role="form" method="post" action="updateJenisProduk" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Nama Produk" type="text" name="namaproduk">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <select name="jenis_produk" id="jenis_produk" class="form-control">
+                                            <option value="Jabatan"> --- Pilih Jenis Produk ---</option>
+                                            @foreach($jenis_produk as $getJenis)
+                                            <option value="{{ $getJenis->id }}">{{ $getJenis->types_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Stock" type="number" name="stock">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Harga Barang" type="number" name="price">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="gambar">
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
 
                 @foreach($product as $produk2)
                 <!-- modal delete -->
