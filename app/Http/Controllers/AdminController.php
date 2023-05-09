@@ -32,18 +32,24 @@ class AdminController extends Controller
         return view('backend.jenis-produk.view', ["jenis" => $jenis_produk]);
     }
 
-    public function indexDataProduk(){
-        $product = Product::all();
-        $jenis_produk = ProductTypesModel::all();
-        return view('backend.product.view',[
-            "product" => $product,
-            "jenis_produk" => $jenis_produk
-        ]);
-    }
-
     public function indexDataUsers(){
         $pelanggan = User::all();
         return view('backend.users.view',["pelanggan" => $pelanggan]);
+    }
+
+    public function updateDataUser(Request $request){
+        $request->validate([
+            'nama' =>'required',
+            'email' =>'required',
+            'username' =>'required'
+        ]);
+        $user = User::find($request->ambilid);
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->save();
+
+        return redirect('indexDataUsers');
     }
 
     public function indexTransaksiPesanan(){

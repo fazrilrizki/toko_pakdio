@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -19,10 +20,10 @@ class Product extends Model
                     ->orWhere('product_description', 'LIKE', '%' . $search . '%');
             });
         });
+    }
 
-        // $query->when($filters['category'] ?? false, function ($query, $category) {
-        //     return
-        // });
+    public function productTypes(): BelongsTo{
+        return $this->belongsTo(ProductTypesModel::class);
     }
 
     public function path()

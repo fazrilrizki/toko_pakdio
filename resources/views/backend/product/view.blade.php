@@ -40,6 +40,7 @@
                                 <th scope="col" class="sort" data-sort="name">No.</th>
                                 <th scope="col" class="sort" data-sort="name">Foto Produk</th>
                                 <th scope="col" class="sort" data-sort="name">Nama Produk</th>
+                                <th scope="col" class="sort" data-sort="name">Jenis Produk</th>
                                 <th scope="col" class="sort" data-sort="budget">Stock</th>
                                 <th scope="col" class="sort" data-sort="status">Harga</th>
                                 <th scope="col">Deskripsi</th>
@@ -53,8 +54,12 @@
                             @foreach($product as $produk)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $produk->product_photo }}</td>
+                                <td><a href="#" class="btn btn-success"  type="button" data-toggle="modal"
+                                    data-target="#modal-gambar{{ $produk->id }}"><i class="ni ni-ruler-pencil"></i>
+                                    <span>Lihat Gambar</span></a>
+                                </td>
                                 <td>{{ $produk->product_name }}</td>
+                                <td>{{ $produk->productTypes->types_name }}</td>
                                 <td>{{ $produk->product_stock }}</td>
                                 <td>{{ $produk->product_price }}</td>
                                 <td>{{ $produk->product_description }}</td>
@@ -65,7 +70,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit' . $id . '">Update</a>
+                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $produk->id }}">Update</a>
                                             <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $produk->id }}">Delete</a>
                                         </div>
                                     </div>
@@ -75,9 +80,8 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Card footer -->
-
-    
+        </div>
+        <!-- Card footer -->
 
     <!-- modal tambah -->
     <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -134,7 +138,15 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="gambar">
+                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="image">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                        </div>
+                                         <input class="form-control" placeholder="Deskripsi Produk" type="text" name="deskripsi">
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -158,7 +170,7 @@
                     <div class="card bg-secondary border-0 mb-0">
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="text-center text-muted mb-4">
-                                <small>Update Data Pegawai</small>
+                                <small>Update Data Produk</small>
                             </div>
                             <form role="form" method="post" action="updateJenisProduk" enctype="multipart/form-data">
                                 @csrf
@@ -167,7 +179,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Nama Produk" type="text" name="namaproduk">
+                                        <input class="form-control" placeholder="Nama Produk" type="text" name="namaproduk" value="{{ $updateProduct->product_name }}">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
@@ -188,7 +200,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Stock" type="number" name="stock">
+                                        <input class="form-control" placeholder="Stock" type="number" name="stock" value="{{ $updateProduct->product_stock }}">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
@@ -196,7 +208,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Harga Barang" type="number" name="price">
+                                        <input class="form-control" placeholder="Harga Barang" type="number" name="price" value="{{ $updateProduct->product_price }}">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
@@ -246,6 +258,36 @@
                                 <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
                             </div>
                         </form>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+                @foreach($product as $gambarProduct)
+                <!-- modal gambar -->
+                <div class="modal fade" id="modal-gambar{{ $gambarProduct->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary border-0 mb-0">
+
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                            <small>Detail Gambar</small>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <div class="input-group input-group-merge input-group-alternative">
+                                                <center>
+
+                                                    <img src="img/{{ $gambarProduct->product_photo }}" alt="" width="80%">
+                                                </center>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

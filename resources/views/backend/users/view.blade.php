@@ -1,6 +1,6 @@
 @extends('backend.layout.main-layout')
 
-@section('title','Data Produk')
+@section('title','Data User')
 
 @section('content')
 <div class="header bg-primary pb-6">
@@ -43,130 +43,80 @@
                             </tr>
                         </thead>
                         <tbody class="list">
+                            <?php
+                            $no = 1;
+                            ?>
                             @foreach($pelanggan as $getPelanggan)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $getPelanggan->name }}</td>
                                 <td>{{ $getPelanggan->email }}</td>
                                 <td>{{ $getPelanggan->username }}</td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $getPelanggan->id }}">Update</a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
-                        
-                                        <!-- modal delete -->
-                                        <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-                                            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                                                <div class="modal-content bg-gradient-danger">
-                                                    <div class="modal-header">
-                                                        <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="py-3 text-center">
-                                                            <i class="ni ni-bell-55 ni-3x"></i>
-                                                            <h4 class="heading mt-4">Apakah kamu yakin ingin menghapus data ini?</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <!-- <form  action="" method="POST"> -->
-                                                        <a href="hapuspegawai.php?id=" class="btn btn-white">Iya</a>
-                                                        <!-- </form> -->
-                                                        <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- modal edit -->
-                                        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
-                                            <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-
-                                                <div class="modal-content">
-                                                    <div class="modal-body p-0">
-                                                        <div class="card bg-secondary border-0 mb-0">
-
-                                                            <div class="card-body px-lg-5 py-lg-5">
-                                                                <div class="text-center text-muted mb-4">
-                                                                    <small>Update Data Pegawai</small>
-                                                                </div>
-
-                                                                <form role="form" method="post" action="editpegawai.php" enctype="multipart/form-data">
-
-
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="nama">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="alamat">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <select name="jabatan" id="jabatan" class="form-control">
-                                                                        
-                                                                                <option value="Jabatan"> --- Pilih Jabatan ---</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="telp">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="user">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group mb-3">
-                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"><i class="ni ni-collection"></i></span>
-                                                                            </div>
-                                                                            <input class="form-control" value="" type="text" name="pass">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                         </tbody>
                     </table>
                 </div>
             </div>
-                <!-- Card footer -->
+            @foreach($pelanggan as $updatePelanggan)
+            <!-- modal update -->
+                <div class="modal fade" id="modal-edit{{ $updatePelanggan->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary border-0 mb-0">
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                            <small>Update Data Pelanggan</small>
+                                        </div>
+                                        <form role="form" method="post" action="updateDataUser" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                                    </div>
+                                                    <input type="hidden" name="ambilid" value="{{ $updatePelanggan->id }}">
+                                                    <input class="form-control" placeholder="Nama Pelanggan" type="text" name="nama" value="{{ $updatePelanggan->name }}">
+                                                </div>
+                                            </div>  
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                                    </div>
+                                                    <input class="form-control" placeholder="Email" type="text" name="email" value="{{ $updatePelanggan->email }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                                    </div>
+                                                    <input type="hidden" name="idjenis" value="{{ $updatePelanggan->id }}">
+                                                    <input class="form-control" placeholder="Username" type="text" name="username" value="{{ $updatePelanggan->username }}">
+                                                </div>
+                                            </div>  
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
 @endsection

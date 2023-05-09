@@ -21,6 +21,7 @@ class CreateTransaksiPemesananTable extends Migration
             $table->foreign('product_id')->references('id')->on('product');
             $table->integer('jumlah_pembelian');
             $table->integer('total_harga');
+            $table->string('alamat_pembelian');
             $table->string('status');
             $table->timestamps();
         });

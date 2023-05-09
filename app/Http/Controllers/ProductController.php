@@ -30,11 +30,12 @@ class ProductController extends Controller
     }
 
     public function actionTransaksi(Request $request){
-         // update data stock barang
-        dd($request);
-        //  $ambilstockSekaranng = $request->ambilstocksekarang;
-        //  $totalStockSekarang = $ambilstockSekaranng - $request->jumlah;
-        //  dd($totalStockSekarang);
+        $request->validate([
+            'namabarang' =>'required',
+            'jumlah' => 'required',
+            'hargat' => 'required',
+            'price' => 'required'
+        ]);
 
     }
 }

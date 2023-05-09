@@ -37,14 +37,16 @@ Route::post('updateJenisProduk', [JenisProdukController::class, 'updateJenisProd
 Route::post('deleteJenisProduk', [JenisProdukController::class, 'deleteJenisProduk']);
 
 //PRODUK
-Route::get('indexDataProduk', [AdminController::class, 'indexDataProduk']);
+Route::get('indexDataProduk', [ProdukAdminController::class, 'indexDataProduk']);
 Route::post('insertProduk', [ProdukAdminController::class, 'insertProduk']);
 
 Route::get('indexDataUsers', [AdminController::class, 'indexDataUsers']);
+Route::post('updateDataUser', [AdminController::class, 'updateDataUser']);
 
 
 //SALDO AKUN PELANGGAN
 Route::get('indexDataSaldoAkun', [SaldoAkunController::class, 'indexDataSaldoAkun']);
+Route::post('deleteSaldo', [SaldoAkunController::class, 'deleteSaldo']);
 
 Route::get('indexDataPesanan', [AdminController::class, 'indexTransaksiPesanan']);
 Route::get('logout', [AdminController::class, 'actionLogout']);
@@ -58,10 +60,12 @@ Route::post('auth', [CustomerController::class, 'authenticate']);
 Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome')->middleware('guest');
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('product', [ProductController::class, 'product']);
+// Route::get('order/barang/{id}', [ProductController::class, 'order']);
+// Route::post('transaksi', [ProductController::class, 'actionTransaksi']);
 
 Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);
-    Route::get('order/barang/{id}', [ProductController::class, 'order']);
+    Route::get('product/{id}', [ProductController::class, 'order']);
     Route::post('transaksi', [ProductController::class, 'actionTransaksi']);
 });
 

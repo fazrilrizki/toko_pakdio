@@ -1,6 +1,6 @@
 @extends('backend.layout.main-layout')
 
-@section('title','Data Produk')
+@section('title','Data Jenis Produk')
 
 @section('content')
 <div class="header bg-primary pb-6">
@@ -66,6 +66,8 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
 
                 <!-- Modal Tambah -->
                 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
