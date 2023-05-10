@@ -27,14 +27,18 @@ class AdminController extends Controller
     }
 
     public function indexDataJenisProduk(){
-        $jenis_produk = ProductTypesModel::all();
+        $jenis_produk = ProductTypesModel::latest();
         // $no = $jenis_produk->first();
-        return view('backend.jenis-produk.view', ["jenis" => $jenis_produk]);
+        return view('backend.jenis-produk.view', [
+            "jenis" =>  $jenis_produk->filter(request(['search']))->paginate(10)->withQueryString()
+        ]);
     }
 
     public function indexDataUsers(){
-        $pelanggan = User::all();
-        return view('backend.users.view',["pelanggan" => $pelanggan]);
+        $pelanggan = User::latest();
+        return view('backend.users.view',[
+            "pelanggan" => $pelanggan->filter(request(['search']))->paginate(10)->withQueryString()
+        ]);
     }
 
     public function updateDataUser(Request $request){
@@ -76,7 +80,7 @@ class AdminController extends Controller
             // $request->session()->put('getUsername', $checkingInput['username']);
             return redirect('dashboard');
         } else {
-            dd('gagal login!');
+            return back()->with('loginError', 'Gagal Login, ulangi kembali!');
         }
     }
 

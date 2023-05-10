@@ -76,9 +76,7 @@ class CustomerController extends Controller
             return redirect()->intended('index');
             // dd('berhasil auth!');
         } else {
-            return back()->withErrors([
-                'username' => 'The provided credentials do not match our records.',
-            ])->onlyInput('username');
+            return back()->with('loginError','Gagal Login, Coba ulangi kembali!');
         }
     }
 

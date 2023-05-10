@@ -79,12 +79,12 @@
                             
                             <form role="form" action="actionLogin" method="POST">
                                 @csrf
-                                @if(session()->has('loginError'))
-                                <div class="alert alert-warning" role="alert">
-                                    {{ session('loginError') }}
-                                </div>
-                                @endif
                                 <div class="form-group mb-3">
+                                    @if(session()->has('loginError'))
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ session('loginError') }}
+                                    </div>
+                                    @endif
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>

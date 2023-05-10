@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class SaldoAkunController extends Controller
 {
     public function indexDataSaldoAkun(){
-        $saldo_user = saldoUser::all();
+        $saldo_user = saldoUser::latest();
         return view('backend.users.saldo_users.view',[
-            "saldoUser" => $saldo_user
+            "saldoUser" => $saldo_user->filter(request(['search']))->paginate(10)->withQueryString()
         ]);
     }
 

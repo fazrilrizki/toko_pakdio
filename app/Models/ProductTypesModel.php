@@ -15,4 +15,12 @@ class ProductTypesModel extends Model
     public function product(): HasMany{
         return $this->hasMany(Product::class);
     }
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                return $query->where('types_name', 'LIKE', '%' . $search . '%');
+            });
+        });
+    }
 }

@@ -16,4 +16,14 @@ class saldoUser extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                return $query->where('saldo_elektronik', 'LIKE', '%' . $search . '%')
+                ->orWhere('saldo_elektronik', 'LIKE', '%' . $search . '%');
+            });
+        });
+    }
 }

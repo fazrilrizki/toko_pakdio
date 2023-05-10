@@ -25,6 +25,10 @@ class Product extends Model
     public function productTypes(): BelongsTo{
         return $this->belongsTo(ProductTypesModel::class);
     }
+    
+    public function pesanan(): BelongsTo {
+        return $this->belongsTo(Pesanan::class);
+    }
 
     public function path()
     {

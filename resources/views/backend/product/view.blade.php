@@ -28,9 +28,23 @@
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Daftar Produk</h3>
-                    <br>
-                    <a href="#" class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-form">Tambah Data</a>
+                    <h3 class="mb-3">Daftar Produk</h3>
+                    <a href="#" class="btn btn-default mb-3" type="button" data-toggle="modal" data-target="#modal-form">Tambah Data</a>
+                    <!-- Search form -->
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main" action="indexDataProduk" method="GET">
+                        @csrf
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Search Data Produk" type="text" name="search">
+                            </div>
+                        </div>
+                        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </form>
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">

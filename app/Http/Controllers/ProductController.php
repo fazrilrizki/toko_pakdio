@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\transaksiPemesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,9 +20,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function order($id)
-    {
-        $product = Product::find($id);
+    public function order(Request $request)
+    {   
+        $ambilIDProduct = $request->ambilidbarang;
+        $product = Product::find($ambilIDProduct);
         if (Auth::check()) {
             return view('frontend.product.order',['product' => $product]);
         } else {
@@ -34,8 +36,18 @@ class ProductController extends Controller
             'namabarang' =>'required',
             'jumlah' => 'required',
             'hargat' => 'required',
-            'price' => 'required'
+            'alamat' => 'required'
         ]);
 
+        $pesanan = new transaksiPemesanan();
+        $pesanan->user_id = $request->ambilidpelanggan;
+        $pesanan->product_id = $request->ambilidproduk;
+        $pesanan->jumlah_pembelian = $request->jumlah;
+        $pesanan->total_harga = $request->hargat;
+        $pesanan->alamat_pembelian = $request->alamat;
+        $pesanan->status = 'Belum Dibayar';
+        $pesanan->save();
+
+        return redirect('index');
     }
 }

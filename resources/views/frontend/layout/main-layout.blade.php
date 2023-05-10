@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/js/main.js" type="text/css">
     <link rel="stylesheet" href="/js/aos.js" type="text/css">
     <link rel="stylesheet" href="/js/jquery-ui.js" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function read() {
             location.href = "#small-container";
@@ -42,7 +44,7 @@
                     <li><a href="product">Produtcs</a></li>
                     @if (Auth::check())
                     <li><a href="account.php">Account</a></li>
-                    <li><a href="pembayaran.php">Pembayaran</a></li>
+                    <li><a href="pembayaran">Pembayaran</a></li>
                     @endif
                     @if (Auth::guest())
                     <li><a href="registerCustomer">Login</a></li>

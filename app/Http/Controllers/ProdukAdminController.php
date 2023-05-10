@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class ProdukAdminController extends Controller
 {
     public function indexDataProduk(){
-        $product = Product::all();
+        $product = Product::latest();
         $jenis_produk = ProductTypesModel::all();
         return view('backend.product.view',[
-            "product" => $product,
+            "product" => $product->filter(request(['search']))->paginate(10)->withQueryString(),
             "jenis_produk" => $jenis_produk
         ]);
     }

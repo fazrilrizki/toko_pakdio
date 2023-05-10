@@ -53,18 +53,13 @@
 	<div class="form-container sign-in-container">
             <form action="auth" method="POST">
 			@csrf
-			@if(session()->has('registerSuccess'))
-			<div class="alert alert-warning" role="alert">
-				{{ session('registerSuccess') }}
-			</div>
-			@endif
-			@if(session()->has('registerFailed'))
-			<div class="alert alert-warning" role="alert">
-				{{ session('registerFailed') }}
-			</div>
-			@endif
 			<h1>Sign In</h1>
 			<span>or use your account</span>
+			@if(session()->has('loginError'))
+			<div class="alert alert-warning" role="alert">
+				{{ session('loginError') }}
+			</div>
+			@endif
 			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">
 			<a href="#">Forgot Your Password</a>
