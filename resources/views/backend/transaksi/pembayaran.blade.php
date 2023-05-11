@@ -28,7 +28,7 @@
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header border-0">
-                    <h3 class="mb-3">Daftar Transaksi Pesanan Pelanggan</h3>
+                    <h3 class="mb-3">Daftar Transaksi Pesanan Pelanggan yang Sudah Dibayar</h3>
                     <!-- Search form -->
                     <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main" action="indexDataJenisProduk" method="GET">
                         @csrf
@@ -51,20 +51,27 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">No.</th>
+                                <th scope="col" class="sort" data-sort="name">Nama User</th>
                                 <th scope="col" class="sort" data-sort="name">Nama Produk</th>
                                 <th scope="col" class="sort" data-sort="name">Jumlah Pesanan</th>
                                 <th scope="col" class="sort" data-sort="budget">Total Harga</th>
+                                <th scope="col" class="sort" data-sort="budget">Alamat Pengirim</th>
                                 <th scope="col" class="sort" data-sort="budget">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="list">
+                            <?php
+                            $no= 1; 
+                            ?>
                             @foreach($pembayaran as $getpembayaran)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $getpembayaran->user->name }}</td>
                                 <td>{{ $getpembayaran->product->product_name }}</td>
                                 <td>{{ $getpembayaran->jumlah_pembelian }}</td>
                                 <td>Rp. {{ $getpembayaran->total_harga }}</td>
+                                <td>{{ $getpembayaran->alamat_pembelian }}</td>
                                 <td>{{ $getpembayaran->status }}</td>
                                 <td class="text-right">
                                     <div class="dropdown">
@@ -73,8 +80,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $produk->id }}">Update</a>
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $produk->id }}">Delete</a>
+                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $getpembayaran->id }}">Update</a>
+                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $getpembayaran->id }}">Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -84,4 +91,76 @@
                     </table>
                 </div>
             </div>
+
+            @foreach($pembayaran as $updateStatus)
+            <!-- modal update -->
+            <div class="modal fade" id="modal-edit{{ $updateStatus->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="card bg-secondary border-0 mb-0">
+                                <div class="card-body px-lg-5 py-lg-5">
+                                    <div class="text-center text-muted mb-4">
+                                        <small>Update Status Pesanan Barang</small>
+                                    </div>
+                                    <form role="form" method="post" action="updateStatus" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group mb-3">
+                                            <input type="hidden" name="ambilidproduk" value="{{ $updateStatus->product->id }}">
+                                            <input type="hidden" name="ambilqty" value="{{ $updateStatus->jumlah_pembelian }}">
+                                            <input type="hidden" name="ambilid" value="{{ $updateStatus->id }}">
+                                            <div class="input-group input-group-merge input-group-alternative">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                                </div>
+                                                <select name="updateStatus" id="updateStatus" class="form-control">
+                                                    <option value=""> --- Update Status Pesanan Barang ---</option>
+                                                    <option value="Dikirim">DIKIRIM</option>
+                                                    <option value="Gagal Pengiriman">Gagal Pengiriman</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+            @foreach($pembayaran as $deletePembayaran)
+                <!-- modal delete -->
+                <div class="modal fade" id="modal-notification{{ $deletePembayaran->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                        <div class="modal-content bg-gradient-danger">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="deleteJenisProduk" method="POST">
+                                    @csrf
+                                <div class="py-3 text-center">
+                                    <i class="ni ni-bell-55 ni-3x"></i>
+                                    <input type="hidden" name="ambilid" value="{{ $deletePembayaran->id }}">
+                                    <h4 class="heading mt-4">Apakah kamu yakin ingin menghapus data ini?</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <form  action="" method="POST"> -->
+                                <button type="submit" class="btn btn-white">Iya</button>
+                                <!-- </form> -->
+                                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 @endsection

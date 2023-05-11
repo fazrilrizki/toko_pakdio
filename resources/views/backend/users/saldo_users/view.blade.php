@@ -128,13 +128,15 @@
                                     <div class="text-center text-muted mb-4">
                                         <small>Update Data Saldo</small>
                                     </div>
-                                    <form role="form" method="post" action="updateSaldo" enctype="multipart/form-data">
+                                    <form role="form" method="POST" action="updateSaldo" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="idsaldo" value="{{ $updateSaldo->id }}">
                                         <div class="form-group mb-3">
                                             <div class="input-group input-group-merge input-group-alternative">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                                 </div>
-                                                <input class="form-control" value="{{ $updateSaldo->user->name }}" type="text" name="nama">
+                                                <input class="form-control" value="{{ $updateSaldo->user->name }}" type="text" name="nama" readonly>
                                             </div>
                                         </div>
 

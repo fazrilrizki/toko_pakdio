@@ -47,9 +47,9 @@ Route::post('updateDataUser', [AdminController::class, 'updateDataUser']);
 //PEMBAYARAN
 Route::get('indexDataPembayaran', [PembayaranController::class, 'indexDataPembayaran']);
 
-
 //SALDO AKUN PELANGGAN
 Route::get('indexDataSaldoAkun', [SaldoAkunController::class, 'indexDataSaldoAkun']);
+Route::post('updateSaldo', [SaldoAkunController::class, 'updateSaldo']);
 Route::post('deleteSaldo', [SaldoAkunController::class, 'deleteSaldo']);
 
 Route::get('indexDataPesanan', [AdminController::class, 'indexTransaksiPesanan']);
@@ -63,12 +63,17 @@ Route::post('auth', [CustomerController::class, 'authenticate']);
 Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome')->middleware('guest');
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('product', [ProductController::class, 'product']);
+Route::post('updateStatus', [PembayaranController::class, 'updateStatus']);
 
 Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);
     Route::get('formTransaksi', [ProductController::class, 'order']);
     Route::post('insertTransaksi', [ProductController::class, 'actionTransaksi']);
     Route::get('pembayaran', [PembayaranController::class, 'pembayaranUser']);
+    Route::get('checkSaldo', [PembayaranController::class, 'checkSaldo']);
+    Route::post('updateDiterima', [PembayaranController::class, 'updateDiterima']);
+    Route::get('account', [CustomerController::class, 'account']);
+    Route::get('deletePesanan', [PembayaranController::class, 'deletePesanan']);
 });
 
 // ROUTE LOGOUT

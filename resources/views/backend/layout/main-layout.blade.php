@@ -67,13 +67,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="indexDataPesanan">
                                 <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Daftar Transaksi Pemesanan Pelanggan</span>
+                                <span class="nav-link-text">Daftar Transaksi Pesanan Pelanggan</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="indexDataPembayaran">
                                 <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Daftar Transaksi Pemesanan Pelanggan yang sudah Dibayar</span>
+                                <span class="nav-link-text">Daftar Transaksi yang Sudah Dibayar</span>
                             </a>
                         </li>
                     </ul>

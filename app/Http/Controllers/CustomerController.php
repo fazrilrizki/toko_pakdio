@@ -40,6 +40,10 @@ class CustomerController extends Controller
         return view('frontend.home.about');
     }
 
+    public function account(){
+        return view('frontend.account.view');
+    }
+
     public function actionRegisterCustomer(Request $request)
     {
         // dd($request->all());
@@ -67,6 +71,10 @@ class CustomerController extends Controller
     public function authenticate(Request $request)
     {
         // dd($request->all());
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {

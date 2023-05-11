@@ -41,7 +41,12 @@
 			<h1>Create Account</h1>
 			<span>or use your email for registration</span>
 			<input type="hidden" name="id">
-			<input type="text" name="nama" placeholder="Nama Lengkap">
+			<input type="text" name="nama" placeholder="Nama Lengkap" class="@error('nama') is-invalid @enderror">
+			@error('nama')
+			<div class="invalid-feedback">
+				{{ $message }}
+			</div>
+			@enderror
 			<input type="email" name="email" placeholder="Email">
 			
 			<input type="text" name="username" placeholder="Username">
@@ -60,8 +65,18 @@
 				{{ session('loginError') }}
 			</div>
 			@endif
-			<input type="text" name="username" placeholder="Username">
+			<input type="text" name="username" placeholder="Username" class="form-control @error('username') is-invalid @enderror">
+			@error('username')
+			<div class="invalid-feedback">
+				{{ $message }}
+			</div>
+			@enderror
 			<input type="password" name="password" placeholder="Password">
+			@error('password ')
+			<div class="invalid-feedback">
+				{{ $message }}
+			</div>
+			@enderror
 			<a href="#">Forgot Your Password</a>
 			<button>Sign In</button>
 			</form>

@@ -102,6 +102,11 @@
                                                     </div>
                                                     <input class="form-control" placeholder="Nama Jenis Produk" type="text" name="namajenis">
                                                 </div>
+                                                @error('namajenis')
+                                                <p style="color: red;">
+                                                    {{ $message }}
+                                                </p>
+                                                @enderror
                                             </div>  
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>

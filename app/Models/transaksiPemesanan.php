@@ -12,23 +12,29 @@ class transaksiPemesanan extends Model
     use HasFactory;
 
     protected $table = 'transaksi_pemesanan';
-
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
-                return $query->where('saldo_elektronik', 'LIKE', '%' . $search . '%')
-                ->orWhere('saldo_elektronik', 'LIKE', '%' . $search . '%');
+                return $query->where('total_harga', 'LIKE', '%' . $search . '%')
+                ->orWhere('alamat_pembelian', 'LIKE', '%' . $search . '%');
             });
         });
-    }
 
+        // $query->join('users', 'users.id', '=', 'transaksi_pemesanan.id')
+        // ->when($filters['search'] ?? false, function ($query, $search) {
+        //     return $query->where(function ($query) use ($search) {
+        //         return $query->where('total_harga', 'LIKE', '%' . $search . '%')
+        //         ->orWhere('alamat_pembelian', 'LIKE', '%' . $search . '%');
+        //     });
+        // });
+    }
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function product(): HasOne{
-        return $this->hasOne(Product::class, 'id');
+    public function product(): BelongsTo{
+        return $this->belongsTo(Product::class);
     }
 }

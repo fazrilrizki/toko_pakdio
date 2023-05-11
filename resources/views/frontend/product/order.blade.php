@@ -2,8 +2,6 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" crossorigin="anonymous">
 
-
-
 @section('title', 'Form Pemesanan')
 
 @section('content')
@@ -25,6 +23,9 @@
                     <label for="">Jumlah</label>
                     <input type="number" class="form-control" name="jumlah" id="jumlah" onkeyup="myFunction() ">
                     <small class="form-text text-muted">Masukkan Jumlah Pembelian</small>
+                    @error('jumlah')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Harga Satuan</label>
@@ -40,6 +41,9 @@
                     <label for="">Alamat Kirim</label>
                     <input type="text" class="form-control" name="alamat">
                     <small class="form-text text-muted">Masukkan Alamat anda</small>
+                    @error('alamat')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>

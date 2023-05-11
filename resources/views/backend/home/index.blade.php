@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total Pendapatan Keseluruhan</h5>
-                                    <span class="h2 font-weight-bold mb-0">Rp. 350.000.000</span>
+                                    <span class="h2 font-weight-bold mb-0">Rp. {{ $hitungPendapatan }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -38,7 +38,7 @@
                                 </div>
 
                             </div>
-                            <a href="#">Detail</a>
+                            <a href="indexDataPesanan">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total Pelanggan</h5>
-                                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ $hitungUser }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">Detail</a>
+                            <a href="indexDataUsers">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Pengeluaran</h5>
-                                    <span class="h2 font-weight-bold mb-0">Rp. 50.000.000</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Produk</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $hitungProduk }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">Detail</a>
+                            <a href="indexDataProduk">Detail</a>
                         </div>
 
                     </div>
@@ -87,7 +87,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Ready Stock</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Stock Tersedia</h5>
                                     <span class="h2 font-weight-bold mb-0">50</span>
                                 </div>
                                 <div class="col-auto">
@@ -109,61 +109,6 @@
 <div class="container-fluid mt--6">
     <div class="row">
         <div class="col-xl-8">
-            <div class="card bg-default">
-                <div class="card-header bg-transparent">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-light text-uppercase ls-1 mb-1">Grafik Pendapatan</h6>
-                            <h5 class="h3 text-white mb-0">Sales value</h5>
-                        </div>
-                        <div class="col">
-                            <ul class="nav nav-pills justify-content-end">
-                                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="Rp. " data-suffix="k">
-                                    <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                        <span class="d-none d-md-block">2020</span>
-                                        <span class="d-md-none">20</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="Rp. " data-suffix="k">
-                                    <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                        <span class="d-none d-md-block">2021</span>
-                                        <span class="d-md-none">21</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- Chart -->
-                    <div class="chart">
-                        <!-- Chart wrapper -->
-                        <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-header bg-transparent">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik Penjualan</h6>
-                            <h5 class="h3 mb-0">Total orders</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- Chart -->
-                    <div class="chart">
-                        <canvas id="chart-bars" class="chart-canvas"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-8">
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-center">
@@ -180,65 +125,25 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Produk</th>
-                                <th scope="col">Harga Jual</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Pelanggan</th>
+                                <th scope="col" class="sort" data-sort="name">Nama User</th>
+                                <th scope="col" class="sort" data-sort="name">Nama Produk</th>
+                                <th scope="col" class="sort" data-sort="name">Jumlah Pesanan</th>
+                                <th scope="col" class="sort" data-sort="budget">Total Harga</th>
+                                <th scope="col" class="sort" data-sort="budget">Alamat Pengirim</th>
+                                <th scope="col" class="sort" data-sort="budget">Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($pesanan as $getPesanan)
                             <tr>
-                                <th scope="row">
-                                    Freedom
-                                </th>
-                                <td>
-                                    Rp. 120.000
-                                </td>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    Rp. 240.000
-                                </td>
-                                <td>
-                                    Yudi
-                                </td>
+                                <td>{{ $getPesanan->user->name }}</td>
+                                <td>{{ $getPesanan->product->product_name }}</td>
+                                <td>{{ $getPesanan->jumlah_pembelian }}</td>
+                                <td>Rp. {{ $getPesanan->total_harga }}</td>
+                                <td>{{ $getPesanan->alamat_pembelian }}</td>
+                                <td>{{ $getPesanan->status }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    Justice
-                                </th>
-                                <td>
-                                    Rp. 120.000
-                                </td>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    Rp. 600.000
-                                </td>
-                                <td>
-                                    Wanda
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Wanderlust
-                                </th>
-                                <td>
-                                    Rp. 120.000
-                                </td>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    Rp. 360.000
-                                </td>
-                                <td>
-                                    Mamat
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -249,10 +154,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Stock Ready Stock</h3>
+                            <h3 class="mb-0">Data Product Stock</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                            <a href="indexDataProduk" class="btn btn-sm btn-primary">See all</a>
                         </div>
                     </div>
                 </div>
@@ -263,43 +168,15 @@
                             <tr>
                                 <th scope="col">Produk</th>
                                 <th scope="col">Qty</th>
-                                <th scope="col">Ukuran</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($product as $produk)
                             <tr>
-                                <th scope="row">
-                                    Freedom
-                                </th>
-                                <td>
-                                    15
-                                </td>
-                                <td>
-                                    S
-                                </td>
+                                <td>{{ $produk->product_name }}</td>
+                                <td>{{ $produk->product_stock }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    Justice
-                                </th>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    M
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Wanderlust
-                                </th>
-                                <td>
-                                    25
-                                </td>
-                                <td>
-                                    S
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

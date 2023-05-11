@@ -57,31 +57,21 @@
                                 <th scope="col" class="sort" data-sort="budget">Total Harga</th>
                                 <th scope="col" class="sort" data-sort="budget">Alamat Pengirim</th>
                                 <th scope="col" class="sort" data-sort="budget">Status</th>
-                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="list">
+                            <?php
+                            $no= 1; 
+                            ?>
                             @foreach($pesanan as $getPesanan)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $getPesanan->user->name }}</td>
                                 <td>{{ $getPesanan->product->product_name }}</td>
                                 <td>{{ $getPesanan->jumlah_pembelian }}</td>
                                 <td>Rp. {{ $getPesanan->total_harga }}</td>
                                 <td>{{ $getPesanan->alamat_pembelian }}</td>
                                 <td>{{ $getPesanan->status }}</td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $getPesanan->id }}">Update</a>
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $getPesanan->id }}">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>

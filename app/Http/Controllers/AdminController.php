@@ -20,10 +20,18 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        // if (session()->has('getUsername')) {
-            
-        // }
-        return view('backend.home.index');
+        $hitungUser = User::count();
+        $hitungProduk = Product::count();
+        $hitungPendapatan = transaksiPemesanan::where('status','Sudah Dibayar')
+                            ->orWhere('status','Dikirim')
+                            ->orWhere('status','Diterima')
+                            ->sum('total_harga');
+        $pesanan = transaksiPemesanan::latest();
+        $product = Product::latest();
+        return view('backend.home.index',compact('hitungUser', 'hitungProduk','hitungPendapatan'), [
+            "pesanan" => $pesanan->paginate(3),
+            "product" => $product->paginate(5)
+        ]);
     }
 
     public function indexDataJenisProduk(){
@@ -57,8 +65,10 @@ class AdminController extends Controller
     }
 
     public function indexTransaksiPesanan(){
-        $pesanan = transaksiPemesanan::all();
-        return view('backend.transaksi.view',["pesanan" => $pesanan]);
+        $pesanan = transaksiPemesanan::latest();
+        return view('backend.transaksi.view',[
+            "pesanan" => $pesanan->filter(request(['search']))->paginate(10)->withQueryString()
+        ]);
     }
     public function actionLogin(Request $request){
 

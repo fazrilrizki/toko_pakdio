@@ -43,8 +43,8 @@
                     <li><a href="about">About</a></li>
                     <li><a href="product">Produtcs</a></li>
                     @if (Auth::check())
-                    <li><a href="account.php">Account</a></li>
-                    <li><a href="pembayaran">Pembayaran</a></li>
+                    <li><a href="account">Account</a></li>
+                    <li><a href="pembayaran">Halaman Transaksi</a></li>
                     @endif
                     @if (Auth::guest())
                     <li><a href="registerCustomer">Login</a></li>
@@ -85,12 +85,8 @@
                 <div class="footer-col-3">
                     <h3>Follow US</h3>
                     <ul>
-                        <a href="instagram.com">
-                            <li>Instagram</li>
-                        </a>
-                        <a href="facebook.com">
-                            <li>Facebook</li>
-                        </a>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
                         <li>Link.in</li>
                         <li>Line</li>
                     </ul>
@@ -112,7 +108,6 @@
     <script type="text/javascript">
         var menuitems = document.getElementById("menuitems");
         menuitems.style.maxHeight = "0px";
-
         function menutoggle() {
             if (menuitems.style.maxHeight == "0px") {
                 menuitems.style.maxHeight = "200px";

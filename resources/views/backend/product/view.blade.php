@@ -117,6 +117,11 @@
                                         </div>
                                         <input class="form-control" placeholder="Nama Produk" type="text" name="namaproduk">
                                     </div>
+                                    @error('namaproduk')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -130,6 +135,11 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('jenis_produk')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -138,6 +148,11 @@
                                         </div>
                                         <input class="form-control" placeholder="Stock" type="number" name="stock">
                                     </div>
+                                    @error('stock')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -146,6 +161,11 @@
                                         </div>
                                         <input class="form-control" placeholder="Harga Barang" type="number" name="price">
                                     </div>
+                                    @error('price')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -154,6 +174,11 @@
                                         </div>
                                         <input class="form-control" placeholder="Upload Foto Produk" type="file" name="image">
                                     </div>
+                                    @error('image')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -162,6 +187,11 @@
                                         </div>
                                          <input class="form-control" placeholder="Deskripsi Produk" type="text" name="deskripsi">
                                     </div>
+                                    @error('deskripsi')
+                                        <p style="color: red;">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>
@@ -186,7 +216,7 @@
                             <div class="text-center text-muted mb-4">
                                 <small>Update Data Produk</small>
                             </div>
-                            <form role="form" method="post" action="updateJenisProduk" enctype="multipart/form-data">
+                            <form role="form" method="post" action="updateProduk" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -230,8 +260,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-collection"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="gambar">
+                                        <input class="form-control" placeholder="Upload Foto Produk" type="file" name="gambar" value="{{ $updateProduct->product_photo }}">
                                     </div>
+                                </div>
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-collection"></i></span>
+                                    </div>
+                                     <input class="form-control" placeholder="Deskripsi Produk" type="text" name="deskripsi">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary my-4" name="simpan">Simpan</button>

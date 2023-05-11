@@ -48,6 +48,6 @@ class ProductController extends Controller
         $pesanan->status = 'Belum Dibayar';
         $pesanan->save();
 
-        return redirect('index');
+        return redirect('pembayaran')->with('berhasilPesan','Pesanan anda sudah diterima, silahkan untuk membayar!');
     }
 }

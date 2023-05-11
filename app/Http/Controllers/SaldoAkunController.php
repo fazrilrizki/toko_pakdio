@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductTypesModel;
 use App\Models\saldoUser;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,14 @@ class SaldoAkunController extends Controller
     }
 
     public function updateSaldo(Request $request){
-        // $request->validate([
-        //     'namajenis' =>'required'
-        // ]);
-        // $jenis_produk = ProductTypesModel::find($request->idjenis);
-        // $jenis_produk->types_name = $request->namajenis;
-        // $jenis_produk->save();
+        $request->validate([
+            'saldo' =>'required'
+        ]);
+        $saldo_user = saldoUser::find($request->idsaldo);
+        $saldo_user->saldo_elektronik = $request->saldo;
+        $saldo_user->save();
+
+        return redirect('indexDataSaldoAkun');
     }
 
     public function deleteSaldo(Request $request){
