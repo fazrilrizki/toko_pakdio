@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JenisProdukController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukAdminController;
@@ -52,6 +53,9 @@ Route::get('indexDataSaldoAkun', [SaldoAkunController::class, 'indexDataSaldoAku
 Route::post('updateSaldo', [SaldoAkunController::class, 'updateSaldo']);
 Route::post('deleteSaldo', [SaldoAkunController::class, 'deleteSaldo']);
 
+//LAPORAN
+Route::get('laporan', [LaporanController::class, 'indexLaporan']);
+
 Route::get('indexDataPesanan', [AdminController::class, 'indexTransaksiPesanan']);
 Route::get('logout', [AdminController::class, 'actionLogout']);
 
@@ -64,6 +68,7 @@ Route::get('home', [CustomerController::class, 'homeCustomer'])->name('guestHome
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('product', [ProductController::class, 'product']);
 Route::post('updateStatus', [PembayaranController::class, 'updateStatus']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('index', [CustomerController::class, 'indexCustomer']);

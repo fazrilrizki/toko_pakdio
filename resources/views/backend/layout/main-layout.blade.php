@@ -76,6 +76,12 @@
                                 <span class="nav-link-text">Daftar Transaksi yang Sudah Dibayar</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="laporan">
+                                <i class="ni ni-bullet-list-67 text-default"></i>
+                                <span class="nav-link-text">Laporan</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -99,7 +105,7 @@
                                 </div>
                             </div>
                         </li>
-                       
+
                     </ul>
                     <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
                         <li class="nav-item dropdown">
@@ -117,10 +123,6 @@
                                 <div class="dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome!</h6>
                                 </div>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-single-02"></i>
-                                    <span>My profile</span>
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a href="logout" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
@@ -135,16 +137,16 @@
 
         @yield('content')
 
-            <footer class="footer pt-0">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6">
-                        <div class="copyright text-center  text-lg-left  text-muted">
-                            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-                        </div>
+        <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6">
+                    <div class="copyright text-center  text-lg-left  text-muted">
+                        &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+    </div>
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
