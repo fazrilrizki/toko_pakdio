@@ -35,7 +35,7 @@
                 <td align="center">{{ $ambilData->product->product_name }}</td>
                 <td align="center">{{ $ambilData->jumlah_pembelian }}</td>
                 <td align="center">{{ $ambilData->product->product_stock }}</td>
-                <td align="center">Rp. @money($totalPenjualanB)</td>
+                <td align="center">Rp. @money($ambilData->total_harga)</td>
                 <td align="center">{{ $ambilData->alamat_pembelian }}</td>
                 <td align="center">{{ $ambilData->status }}</td>
             </tr>

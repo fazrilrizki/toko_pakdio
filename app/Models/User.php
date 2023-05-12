@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function saldo(): HasOne
     {
-        return $this->hasOne('App\Models\saldoUser', 'id');
+        return $this->hasOne(saldoUser::class);
     }
 
     public function pesanan(): BelongsTo

@@ -29,9 +29,11 @@ class AdminController extends Controller
                                 ->sum('total_harga');
             $pesanan = transaksiPemesanan::latest();
             $product = Product::latest();
+            $stock = Product::select('product_stock')->sum('product_stock');
             return view('backend.home.index',compact('hitungUser', 'hitungProduk','hitungPendapatan'), [
                 "pesanan" => $pesanan->paginate(3),
-                "product" => $product->paginate(5)
+                "product" => $product->paginate(5),
+                "stock" => $stock
             ]);
         }
         return redirect('loginAdmin');

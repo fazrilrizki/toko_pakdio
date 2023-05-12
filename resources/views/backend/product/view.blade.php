@@ -75,7 +75,7 @@
                                 <td>{{ $produk->product_name }}</td>
                                 <td>{{ $produk->productTypes->types_name }}</td>
                                 <td>{{ $produk->product_stock }}</td>
-                                <td>{{ $produk->product_price }}</td>
+                                <td>Rp. @money($produk->product_price)</td>
                                 <td>{{ $produk->product_description }}</td>
                                 <td class="text-right">
                                     <div class="dropdown">

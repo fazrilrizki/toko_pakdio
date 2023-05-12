@@ -81,7 +81,6 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-edit{{ $getpembayaran->id }}">Update</a>
-                                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#modal-notification{{ $getpembayaran->id }}">Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -116,7 +115,6 @@
                                                 <select name="updateStatus" id="updateStatus" class="form-control">
                                                     <option value=""> --- Update Status Pesanan Barang ---</option>
                                                     <option value="Dikirim">DIKIRIM</option>
-                                                    <option value="Gagal Pengiriman">Gagal Pengiriman</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -132,35 +130,4 @@
             </div>
             @endforeach
 
-            @foreach($pembayaran as $deletePembayaran)
-                <!-- modal delete -->
-                <div class="modal fade" id="modal-notification{{ $deletePembayaran->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                        <div class="modal-content bg-gradient-danger">
-                            <div class="modal-header">
-                                <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="deleteJenisProduk" method="POST">
-                                    @csrf
-                                <div class="py-3 text-center">
-                                    <i class="ni ni-bell-55 ni-3x"></i>
-                                    <input type="hidden" name="ambilid" value="{{ $deletePembayaran->id }}">
-                                    <h4 class="heading mt-4">Apakah kamu yakin ingin menghapus data ini?</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <!-- <form  action="" method="POST"> -->
-                                <button type="submit" class="btn btn-white">Iya</button>
-                                <!-- </form> -->
-                                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
 @endsection

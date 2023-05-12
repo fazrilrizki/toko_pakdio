@@ -12,8 +12,10 @@ class SaldoAkunController extends Controller
     public function indexDataSaldoAkun(){
         if (session()->has('getUsername')) {
             $saldo_user = saldoUser::latest();
+            $no = 1;
             return view('backend.users.saldo_users.view',[
-                "saldoUser" => $saldo_user->filter(request(['search']))->paginate(10)->withQueryString()
+                "saldoUser" => $saldo_user->filter(request(['search']))->paginate(10)->withQueryString(),
+                "no" => $no
             ]);
         }
     return redirect('loginAdmin');

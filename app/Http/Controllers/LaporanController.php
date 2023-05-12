@@ -46,15 +46,15 @@ class LaporanController extends Controller
             }else if($valueDownloadBulan){
                 $currentMonth = Carbon::now();
                 $monthName = $currentMonth->format('F');
-                $cetakLaporanB = transaksiPemesanan::whereRaw('MONTH(created_at) = ?',[$currentMonth])
-                                ->Where('status','Sudah Dibayar')
-                                ->orWhere('status','Dikirim')
-                                ->orWhere('status','Diterima')
+                $cetakLaporanB = transaksiPemesanan::whereMonth('created_at',Carbon::now()->month)
+                                ->orWhere('status','Sudah Dibayar')
+                                ->where('status','Dikirim')
+                                ->where('status','Diterima')
                                 ->get();
-                $totalPenjualanB = transaksiPemesanan::whereRaw('MONTH(created_at) = ?',[$currentMonth])
-                                ->Where('status','Sudah Dibayar')
-                                ->orWhere('status','Dikirim')
-                                ->orWhere('status','Diterima')
+                $totalPenjualanB = transaksiPemesanan::whereMonth('created_at',Carbon::now()->month)
+                                ->orWhere('status','Sudah Dibayar')
+                                ->where('status','Dikirim')
+                                ->where('status','Diterima')
                                 ->sum('total_harga');
                 $no = 1;
                 return view('backend.laporan.cetak-laporan-bulan',[

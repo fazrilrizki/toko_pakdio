@@ -17,7 +17,8 @@ class transaksiPemesanan extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 return $query->where('total_harga', 'LIKE', '%' . $search . '%')
-                ->orWhere('alamat_pembelian', 'LIKE', '%' . $search . '%');
+                ->orWhere('alamat_pembelian', 'LIKE', '%' . $search . '%')
+                ->orWhere('status', 'LIKE', '%' . $search . '%');
             });
         });
 

@@ -43,7 +43,11 @@ class CustomerController extends Controller
     }
 
     public function account(){
-        return view('frontend.account.view');
+        $saldo = new saldoUser();
+        $ambilSaldo = $saldo::where('user_id', Auth::user()->id)->first();
+        return view('frontend.account.view', [
+            'ambilSaldo' => $ambilSaldo
+        ]);
     }
 
     public function actionRegisterCustomer(Request $request)
@@ -66,7 +70,7 @@ class CustomerController extends Controller
 
             $saldo_user = new saldoUser();
             $saldo_user->user_id = $getUserID;
-            $saldo_user->saldo_elektronik = 69;
+            $saldo_user->saldo_elektronik = 100000;
             $saldo_user->save();
 
             return redirect('registerCustomer')->with('registerSuccess', 'Registrasi Berhasil!');

@@ -44,7 +44,7 @@ class PembayaranController extends Controller
 
     public function checkSaldo(Request $request){
         //AMBIL SALDO
-        $saldo = saldoUser::find(Auth::id());
+        $saldo = saldoUser::where('user_id', Auth::user()->id)->first();
         $ambilSaldo = $saldo->saldo_elektronik;
 
         // AMBIL TOTAL HARGA PEMESANAN

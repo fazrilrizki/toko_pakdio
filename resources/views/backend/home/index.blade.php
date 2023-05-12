@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total Pendapatan Keseluruhan</h5>
-                                    <span class="h2 font-weight-bold mb-0">Rp. {{ $hitungPendapatan }}</span>
+                                    <span class="h2 font-weight-bold mb-0">Rp. @money($hitungPendapatan)</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -88,7 +88,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total Stock Tersedia</h5>
-                                    <span class="h2 font-weight-bold mb-0">50</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ $stock }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">Detail</a>
+                            <a href="indexDataProduk">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             <h3 class="mb-0">Data Penjualan Terbaru</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                            <a href="indexDataPesanan" class="btn btn-sm btn-primary">See all</a>
                         </div>
                     </div>
                 </div>

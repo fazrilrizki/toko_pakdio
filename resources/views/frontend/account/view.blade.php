@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-3">
                 <img src="img/admin.jpg" alt="belum upload foto">
-                <p>Saldo : Rp. </p>
+                <p>Saldo : Rp. @money($ambilSaldo->saldo_elektronik)</p>
             </div>
         </div>
     </div>

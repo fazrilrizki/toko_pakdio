@@ -61,7 +61,7 @@
                             ?>
                             @foreach ($saldoUser as $getSaldo)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $getSaldo->user->name }}</td>
                                 <td>Rp. @money($getSaldo->saldo_elektronik)</td>
                                 <td class="text-right">
