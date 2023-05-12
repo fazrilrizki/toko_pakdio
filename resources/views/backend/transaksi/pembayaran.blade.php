@@ -70,7 +70,7 @@
                                 <td>{{ $getpembayaran->user->name }}</td>
                                 <td>{{ $getpembayaran->product->product_name }}</td>
                                 <td>{{ $getpembayaran->jumlah_pembelian }}</td>
-                                <td>Rp. {{ $getpembayaran->total_harga }}</td>
+                                <td>Rp. @money($getpembayaran->total_harga)</td>
                                 <td>{{ $getpembayaran->alamat_pembelian }}</td>
                                 <td>{{ $getpembayaran->status }}</td>
                                 <td class="text-right">

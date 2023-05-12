@@ -13,40 +13,49 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function formLogin(){
-        // if (session()->has('getUsername')) {
-        //     return redirect('dashboard');
-        // }
+        if (session()->has('getUsername')) {
+            return redirect('dashboard');
+        }
         return view('backend.login.login');
     }
 
     public function dashboard(){
-        $hitungUser = User::count();
-        $hitungProduk = Product::count();
-        $hitungPendapatan = transaksiPemesanan::where('status','Sudah Dibayar')
-                            ->orWhere('status','Dikirim')
-                            ->orWhere('status','Diterima')
-                            ->sum('total_harga');
-        $pesanan = transaksiPemesanan::latest();
-        $product = Product::latest();
-        return view('backend.home.index',compact('hitungUser', 'hitungProduk','hitungPendapatan'), [
-            "pesanan" => $pesanan->paginate(3),
-            "product" => $product->paginate(5)
-        ]);
+        if (session()->has('getUsername')) {
+            $hitungUser = User::count();
+            $hitungProduk = Product::count();
+            $hitungPendapatan = transaksiPemesanan::where('status','Sudah Dibayar')
+                                ->orWhere('status','Dikirim')
+                                ->orWhere('status','Diterima')
+                                ->sum('total_harga');
+            $pesanan = transaksiPemesanan::latest();
+            $product = Product::latest();
+            return view('backend.home.index',compact('hitungUser', 'hitungProduk','hitungPendapatan'), [
+                "pesanan" => $pesanan->paginate(3),
+                "product" => $product->paginate(5)
+            ]);
+        }
+        return redirect('loginAdmin');
     }
 
     public function indexDataJenisProduk(){
-        $jenis_produk = ProductTypesModel::latest();
-        // $no = $jenis_produk->first();
-        return view('backend.jenis-produk.view', [
-            "jenis" =>  $jenis_produk->filter(request(['search']))->paginate(10)->withQueryString()
-        ]);
+        if (session()->has('getUsername')) {
+            $jenis_produk = ProductTypesModel::latest();
+            // $no = $jenis_produk->first();
+            return view('backend.jenis-produk.view', [
+                "jenis" =>  $jenis_produk->filter(request(['search']))->paginate(10)->withQueryString()
+            ]);
+        }
+        return redirect('loginAdmin');
     }
 
     public function indexDataUsers(){
-        $pelanggan = User::latest();
-        return view('backend.users.view',[
-            "pelanggan" => $pelanggan->filter(request(['search']))->paginate(10)->withQueryString()
-        ]);
+        if (session()->has('getUsername')) {
+            $pelanggan = User::latest();
+            return view('backend.users.view',[
+                "pelanggan" => $pelanggan->filter(request(['search']))->paginate(10)->withQueryString()
+            ]);
+        }
+        return redirect('loginAdmin');
     }
 
     public function updateDataUser(Request $request){
@@ -65,10 +74,13 @@ class AdminController extends Controller
     }
 
     public function indexTransaksiPesanan(){
-        $pesanan = transaksiPemesanan::latest();
-        return view('backend.transaksi.view',[
-            "pesanan" => $pesanan->filter(request(['search']))->paginate(10)->withQueryString()
-        ]);
+        if (session()->has('getUsername')) {
+            $pesanan = transaksiPemesanan::latest();
+            return view('backend.transaksi.view',[
+                "pesanan" => $pesanan->filter(request(['search']))->paginate(10)->withQueryString()
+            ]);
+        }
+        return redirect('loginAdmin');
     }
     public function actionLogin(Request $request){
 
@@ -87,7 +99,7 @@ class AdminController extends Controller
 
 
         if ($ambilCount == 1) {
-            // $request->session()->put('getUsername', $checkingInput['username']);
+            $request->session()->put('getUsername', $checkingInput['username']);
             return redirect('dashboard');
         } else {
             return back()->with('loginError', 'Gagal Login, ulangi kembali!');
@@ -95,9 +107,9 @@ class AdminController extends Controller
     }
 
     public function actionLogout(){
-        // if (session()->has('getUsername')) {
-        //     session()->pull('getUsername');
-        // }
+        if (session()->has('getUsername')) {
+            session()->pull('getUsername');
+        }
         return redirect('loginAdmin');
     }
 }

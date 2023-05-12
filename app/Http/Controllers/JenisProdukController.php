@@ -19,7 +19,7 @@ class JenisProdukController extends Controller
         $jenis_produk->types_name = $request->namajenis;
         $jenis_produk->save();
 
-        return redirect('indexDataJenisProduk');
+        return redirect('indexDataJenisProduk')->with('berhasilInsert', 'Berhasil menambahkan data jenis produk!');
     }
 
     public function updateJenisProduk(Request $request){

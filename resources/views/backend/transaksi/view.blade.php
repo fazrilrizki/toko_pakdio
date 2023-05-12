@@ -69,7 +69,7 @@
                                 <td>{{ $getPesanan->user->name }}</td>
                                 <td>{{ $getPesanan->product->product_name }}</td>
                                 <td>{{ $getPesanan->jumlah_pembelian }}</td>
-                                <td>Rp. {{ $getPesanan->total_harga }}</td>
+                                <td>Rp. @money($getPesanan->total_harga)</td>
                                 <td>{{ $getPesanan->alamat_pembelian }}</td>
                                 <td>{{ $getPesanan->status }}</td>
                             </tr>

@@ -18,17 +18,16 @@
                     </nav>
                 </div>
             </div>
-            <form action="penjualan.php" method="POST">
+            <form action="actionLaporan" method="GET">
                 <div class="row form-group">
-                    <div class="col-6"><label for="sumber"><b> Dari </b></label></div>
-                    <div class="col-6"> <label for="nominal"><b> Sampai </b></label></div>
-                    <div class="col-6"><input type="date" name="dari" class="form-control" id="exampleFormControlInput1"></div>
-                    <div class="col-6"><input type="date" name="sampai" class="form-control" id="exampleFormControlInput1"></div>
+                    <div class="col-6"><label for="sumber"><b> Tanggal Laporan Harian </b></label></div>
+                    <div class="col-12"><input type="date" name="dari" class="form-control" id="exampleFormControlInput1"></div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-info" type="submit" name="cari">Cari</button>
-                    <button class="btn btn-info" type="submit" name="lihat">Lihat Semua Data</button>
-                    <button class="btn btn-info" type="submit" name="lihat">Download PDF</button>
+                    <button class="btn btn-info" type="submit" value="cari" name="cari">Cari</button>
+                    <button class="btn btn-info" type="submit" value="lihat" name="lihat">Lihat Semua Data</button>
+                    <button class="btn btn-info" type="submit" value="laporanH" name="laporanH">Download Laporan Harian berdasarkan Tanggal yang Dipilih</button>
+                    <button class="btn btn-info" type="submit" value="laporanB" name="laporanB">Download Laporan Bulan Ini</button>
                 </div>
             </form>
         </div>
@@ -41,6 +40,11 @@
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header border-0">
+                    @if(empty($ambilDari))
+                    <h3 class="mb-0">Daftar Pesanan Pelanggan</h3>
+                    @else
+                    <h3>Daftar Penjualan pada Tanggal {{ $ambilDari }}</h3>
+                    @endif
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
@@ -48,19 +52,29 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">No.</th>
-                                <th scope="col" class="sort" data-sort="name">Produk</th>
-                                <th scope="col" class="sort" data-sort="budget">Nama pemesan</th>
-                                <th scope="col" class="sort" data-sort="status">Ukuran</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Harga Total</th>
-                                <th scope="col">Alamat Kirim</th>
-                                <th scope="col">Status Pemesanan</th>
-                                <th scope="col">Status pembayaran</th>
-                                <th scope="col">Tanggal pembayaran</th>
-                                <th scope="col">Bukti pembayaran</th>
+                                <th scope="col" class="sort" data-sort="name">Nama User</th>
+                                <th scope="col" class="sort" data-sort="name">Nama Produk</th>
+                                <th scope="col" class="sort" data-sort="name">Jumlah Pesanan</th>
+                                <th scope="col" class="sort" data-sort="budget">Total Harga</th>
+                                <th scope="col" class="sort" data-sort="budget">Alamat Pengirim</th>
+                                <th scope="col" class="sort" data-sort="budget">Status</th>
                             </tr>
                         </thead>
                         <tbody class="list">
+                            <?php
+                            $no = 1; 
+                            ?>
+                            @foreach($pesananSearch as $getPesanan)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $getPesanan->user->name }}</td>
+                                <td>{{ $getPesanan->product->product_name }}</td>
+                                <td>{{ $getPesanan->jumlah_pembelian }}</td>
+                                <td>Rp. @money($getPesanan->total_harga)</td>
+                                <td>{{ $getPesanan->alamat_pembelian }}</td>
+                                <td>{{ $getPesanan->status }}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

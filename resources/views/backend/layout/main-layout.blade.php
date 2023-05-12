@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="laporan">
+                            <a class="nav-link" href="actionLaporan">
                                 <i class="ni ni-bullet-list-67 text-default"></i>
                                 <span class="nav-link-text">Laporan</span>
                             </a>
@@ -115,7 +115,7 @@
                                         <img alt="Image placeholder" src="img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        <span class="mb-0 text-sm  font-weight-bold">Admin TokoPakDio</span>
                                     </div>
                                 </div>
                             </a>

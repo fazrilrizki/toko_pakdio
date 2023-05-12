@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\saldoUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class CustomerController extends Controller
 {
@@ -47,11 +49,10 @@ class CustomerController extends Controller
     public function actionRegisterCustomer(Request $request)
     {
         // dd($request->all());
-        try {
             $request->validate([
                 'nama' => 'required',
-                'username' => 'required',
-                'email' => 'required',
+                'username' => 'required|unique:users',
+                'email' => 'required|unique:users',
                 'password' => 'required',
             ]);
 
@@ -61,11 +62,14 @@ class CustomerController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->save();
+            $getUserID = $user->id;
+
+            $saldo_user = new saldoUser();
+            $saldo_user->user_id = $getUserID;
+            $saldo_user->saldo_elektronik = 69;
+            $saldo_user->save();
 
             return redirect('registerCustomer')->with('registerSuccess', 'Registrasi Berhasil!');
-        } catch (\Exception $e) {
-            return redirect('registerCustomer')->with('registerError', 'Registrasi Gagal!, Coba Kembali!');
-        }
     }
 
     public function authenticate(Request $request)

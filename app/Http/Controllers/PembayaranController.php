@@ -12,12 +12,15 @@ class PembayaranController extends Controller
 {
     //FRONT END
     public function indexDataPembayaran(){
-        $pembayaran = transaksiPemesanan::where('status','Sudah Dibayar')
-                    ->orWhere('status', 'Dikirim')
-                    ->get();
-        return view('backend.transaksi.pembayaran',[
-            "pembayaran" => $pembayaran
-        ]);
+        if (session()->has('getUsername')) {
+            $pembayaran = transaksiPemesanan::where('status','Sudah Dibayar')
+                        ->orWhere('status', 'Dikirim')
+                        ->get();
+            return view('backend.transaksi.pembayaran',[
+                "pembayaran" => $pembayaran
+            ]);
+        }
+        return redirect('loginAdmin');
     }
 
     public function updateDiterima(Request $request)
@@ -73,16 +76,19 @@ class PembayaranController extends Controller
     
     //BACK END
     public function pembayaranUser(){
-        $pembayaranUserBelumDibayar = transaksiPemesanan::where('user_id',Auth::id())
+        $ambilUser = Auth::user()->id;
+        $transaksi_pesanan = new transaksiPemesanan();
+        $pembayaranUserBelumDibayar = $transaksi_pesanan::where('user_id',$ambilUser)
                             ->where('status','Belum Dibayar')
                             ->get();
-        $pembayaranUserSudahDibayar = transaksiPemesanan::where('user_id',Auth::id())
-                                        ->where('status','Sudah Dibayar')
-                                        ->orWhere('status', 'Dikirim')
-                                        ->orWhere('status','Diterima')
+        $pembayaranUserSudahDibayar = $transaksi_pesanan::where('user_id',$ambilUser)
+                                        ->whereIn('status',['Sudah Dibayar','Dikirim','Diterima'])
                                         ->get();
-                        
-        return view('frontend.pembayaran.view',compact('pembayaranUserBelumDibayar', 'pembayaranUserSudahDibayar'));
+        
+        return view('frontend.pembayaran.view',[
+            "pembayaranUserBelumDibayar" => $pembayaranUserBelumDibayar,
+            "pembayaranUserSudahDibayar" => $pembayaranUserSudahDibayar
+        ]);
     }
 
     public function updateStatus(Request $request)

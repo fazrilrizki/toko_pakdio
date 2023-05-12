@@ -54,7 +54,9 @@ Route::post('updateSaldo', [SaldoAkunController::class, 'updateSaldo']);
 Route::post('deleteSaldo', [SaldoAkunController::class, 'deleteSaldo']);
 
 //LAPORAN
-Route::get('laporan', [LaporanController::class, 'indexLaporan']);
+// Route::get('laporan', [LaporanController::class, 'indexLaporan']);
+Route::get('actionLaporan', [LaporanController::class, 'actionLaporan']);
+Route::get('cetakLaporanHarian', [LaporanController::class, 'cetakLaporanHarian']);
 
 Route::get('indexDataPesanan', [AdminController::class, 'indexTransaksiPesanan']);
 Route::get('logout', [AdminController::class, 'actionLogout']);

@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class SaldoAkunController extends Controller
 {
+    //BACKEND
     public function indexDataSaldoAkun(){
-        $saldo_user = saldoUser::latest();
-        return view('backend.users.saldo_users.view',[
-            "saldoUser" => $saldo_user->filter(request(['search']))->paginate(10)->withQueryString()
-        ]);
+        if (session()->has('getUsername')) {
+            $saldo_user = saldoUser::latest();
+            return view('backend.users.saldo_users.view',[
+                "saldoUser" => $saldo_user->filter(request(['search']))->paginate(10)->withQueryString()
+            ]);
+        }
+    return redirect('loginAdmin');
     }
 
     public function updateSaldo(Request $request){
@@ -32,4 +36,5 @@ class SaldoAkunController extends Controller
 
         return redirect('indexDataSaldoAkun');
     }
+
 }

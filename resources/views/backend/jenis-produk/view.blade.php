@@ -29,7 +29,7 @@
                 <!-- Card header -->
                 <div class="card-header border-0">
                     <h3 class="mb-3">Daftar Jenis Produk</h3>
-                    <a href="#" class="btn btn-default mb-3" type="button" data-toggle="modal" data-target="#modal-form">Tambah Data</a>
+                    <a class="btn btn-default mb-3" type="button" data-toggle="modal" data-target="#modal-form">Tambah Data</a>
                      <!-- Search form -->
                     <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main" action="indexDataJenisProduk" method="GET">
                         @csrf

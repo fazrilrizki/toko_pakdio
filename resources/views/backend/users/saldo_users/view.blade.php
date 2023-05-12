@@ -63,7 +63,7 @@
                             <tr>
                                 <td>1</td>
                                 <td>{{ $getSaldo->user->name }}</td>
-                                <td>{{ $getSaldo->saldo_elektronik }}</td>
+                                <td>Rp. @money($getSaldo->saldo_elektronik)</td>
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
