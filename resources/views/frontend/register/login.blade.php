@@ -30,7 +30,7 @@
 			<h1>Sign In Cuy</h1>
 			<span>or use your account</span>
 			<span>or use your account</span>
-			<span>Siapa</span>
+			<span>Mang eak</span>
 			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">
 			<a href="#">Forgot Your Password</a>

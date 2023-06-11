@@ -19,6 +19,8 @@
                             <li class="breadcrumb-item"><a href="#">Tidak Daftar 1</a></li>
                             <li class="breadcrumb-item"><a href="#">Tidak Daftar 2</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Jenis Produk</li>
+                            <li class="breadcrumb-item active" aria-current="page">Jenis Produk</li>
+                            <li class="breadcrumb-item active" aria-current="page">Jenis Produk</li>
                         </ol>
                     </nav>
                 </div>
