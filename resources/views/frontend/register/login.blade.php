@@ -27,10 +27,8 @@
 <div class="container" id="container">
 	<div class="form-container sign-in-container">
             <form action="login_action.php" method="POST">
-			<h1>Sign In Cuy</h1>
+			<h1>Sign In</h1>
 			<span>or use your account</span>
-			<span>or use your account</span>
-			<span>Mang eak</span>
 			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">
 			<a href="#">Forgot Your Password</a>
