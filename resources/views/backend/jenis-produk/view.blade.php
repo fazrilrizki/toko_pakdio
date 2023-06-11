@@ -14,6 +14,10 @@
                             <li class="breadcrumb-item"><a href="#"><i class="fas fa-home">Cinta</i></a></li>
                             <li class="breadcrumb-item"><a href="#">URL</a></li>
                             <li class="breadcrumb-item"><a href="#">TFazril</a></li>
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tidak Daftar Lagi</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tidak Daftar 1</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tidak Daftar 2</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Jenis Produk</li>
                         </ol>
                     </nav>
